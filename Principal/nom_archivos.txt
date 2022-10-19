@@ -1,0 +1,3 @@
+contraseñas_us.txt
+nickname_us.txt
+nom_archivos.txt
