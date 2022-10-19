@@ -62,7 +62,7 @@ void Prueba::tablero(){
 }*/
 
 void Prueba::tablero_juego(){
-  // system("cls");
+   system("cls");
    int col=0;
 
    for(int l = 0; l < 42 ;l++){
@@ -87,33 +87,35 @@ bool Prueba::ver_ganador(){
 };
 
 void Prueba::agregarficha(bool jugadores){
+   int o;
+   int i;
+   ficha--;
+   bool flag = false;
+   bool fla = false;
+
    if(jugadores == true){
-     // int x = x + ficha;
-     
-      for(int o = 0; o < 42; o = o + 7){
-         if(tablero[o] = '0'){
+      for( o = ficha; o < 42; o = o + 7){
+         if(tablero[o] != '0'){
             tablero[o-7] = 'X'; 
-            cout<<"IIIII";
+            flag=true;
             break;
-
-         }
-
-      }
-   } 
-      
-  /*if(jugadores = false){
-      for(int o = 0; o < 6;o = o + 7){
-         if(tablero[o] == tablero[o + 7]
-         && tablero[o] == tablero[o + 7]
-         && tablero[o] == tablero[o + 7]
-         && tablero[o] == tablero[o + 7]
-         && tablero[o] == tablero[o + 7]
-         && tablero[o] == tablero[o + 7]
-         && tablero[o] != '\0'){
-            tablero[o] == 'O'; 
          }
       }
+      if(flag==false){
+         tablero[35+ficha]='X';
+      }
+
    } 
-*/
-   
+  if(jugadores == false){
+     for( i = ficha; i < 42; i = i + 7){
+         if(tablero[i] != '0'){
+            tablero[i-7] = 'O'; 
+            fla=true;
+            break;
+         }
+      }
+      if(fla == false){
+         tablero[35+ficha] = 'O';
+      }
+   } 
 }; 
