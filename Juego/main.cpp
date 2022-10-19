@@ -30,4 +30,5 @@ int main(){
             cout<<"Gano el jugador 1"<<endl;
         }
     }
-}
+    return 0;
+};
