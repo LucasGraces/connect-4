@@ -87,13 +87,9 @@ bool Prueba::ver_ganador(){
 };
 
 void Prueba::agregarficha(bool jugadores){
-
-
    if(jugadores == true){
-     
- 
-
      // int x = x + ficha;
+     
       for(int o = 0; o < 42; o = o + 7){
          if(tablero[o] = '0'){
             tablero[o-7] = 'X'; 
