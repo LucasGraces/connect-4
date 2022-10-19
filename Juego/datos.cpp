@@ -62,7 +62,7 @@ void Prueba::tablero(){
 }*/
 
 void Prueba::tablero_juego(){
-   system("cls");
+  
    int col=0;
 
    for(int l = 0; l < 42 ;l++){
@@ -71,26 +71,41 @@ void Prueba::tablero_juego(){
   
       if(col==7) {
          col=0;
-         cout<<'|'<<endl;
+         cout<<" |"<<endl;
       }
    }
 };
 bool Prueba::ver_ganador(){
    bool resultado = false;
+  // for(int i = 0; i < 42; i = i + 4){
+      if(tablero[15] == tablero[29]
+         && tablero[15] == tablero[22]
+         && tablero[15] == tablero[36]
+         && tablero[15] != '\0'){
+            resultado = true;
+            
+            //break;
+         }
+      
+   //}
+      return resultado;
 
+
+
+/*
    for(int i = 0; i < 42; i = i + 4){
       if(tablero[lineas[i]] == tablero[lineas[i + 1]]
          && tablero[lineas[i]] == tablero[lineas[i + 2]]
          && tablero[lineas[i]] == tablero[lineas[i + 3]]
          && tablero[lineas[i] != '\0']){
             resultado = true;
-            return resultado;
-      }
-      else{
-         resultado = false;
-      }
+            break;
+         }
+         else{
+            resultado = false;
+         }
    }
-   return resultado;
+  */
 };
 
 void Prueba::agregarficha(bool jugadores){
