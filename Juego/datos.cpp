@@ -63,25 +63,17 @@ void Prueba::tablero(){
 
 void Prueba::tablero_juego(){
   // system("cls");
-
    int col=0;
+
    for(int l = 0; l < 42 ;l++){
       cout<<"|"<<tablero[l];
-
       col++;
   
-
       if(col==7) {
          col=0;
          cout<<'|'<<endl;
-
       }
-
-   
-     
    }
-
-     
 };
 bool Prueba::ver_ganador(){
    string resultado;
@@ -92,7 +84,7 @@ bool Prueba::ver_ganador(){
          && tablero[lineas[i] != '\0']){
       }
    }
-}
+};
 
 void Prueba::agregarficha(bool jugadores){
 
@@ -128,5 +120,4 @@ void Prueba::agregarficha(bool jugadores){
    } 
 */
    
-
 }; 
