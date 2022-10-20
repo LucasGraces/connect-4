@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "Sistema.h"
 #include "Archivo.h"
 #include "Invitado.h"
@@ -20,9 +21,31 @@ bool Sistema::elegir_archivo(string nombre){
 };
 
 bool Sistema::generar(string nombre){
+    bool resultado = false;
 
+    string nombre2 = nombre + ".txt";
+
+    ofstream archivo;
+    archivo.open(nombre,ios::trunc);
+
+    if(!archivo.fail()){
+        resultado = true;
+        setear_archivo(nombre);
+    }
+    else{
+        resultado = false;
+    }
+
+    archivo.close();
+    return resultado;
 };
 
-void Sistema::setear_archivo(){
+void Sistema::setear_archivo(string nombre){
+    string nombre2 = nombre + ".txt";
+        
+    ofstream archivo;
+    archivo.open("nom_archivos.txt", ios::app);
+
+    archivo<<nombre2 + "\n";
     
 };

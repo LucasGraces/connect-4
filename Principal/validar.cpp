@@ -1,22 +1,3 @@
-#include <string>
-#include <iostream>
-#include <fstream>
-#include "validar.h"
-#include "Archivo.h"
-#include "administrador.h"
-
-using namespace std;
-
-bool validar::validar_datos(string nom_us, string password){
-    bool resultado = false;
-
-    
-};
-
-int validar::buscar_usuario(string nom_us){
-    
-};
-
 int validar::buscar_password(string password){
     int estado = 0;
     string contenido;

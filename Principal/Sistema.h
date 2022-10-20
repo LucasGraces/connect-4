@@ -12,6 +12,6 @@ class Sistema{
         bool generar(string nombre);
     
     private:
-        void setear_archivo();
+        void setear_archivo(string nombre);
 
 };

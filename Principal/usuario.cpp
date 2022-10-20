@@ -42,3 +42,11 @@ bool Usuario::validar_usuario(){
 
     return resultado;
 };
+
+void Usuario::cargar_invitado(){
+
+};
+
+void Usuario::cargartablero(){
+
+};
