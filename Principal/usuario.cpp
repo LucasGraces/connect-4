@@ -44,7 +44,7 @@ bool Usuario::validar_usuario(){
 };
 
 void Usuario::cargar_invitado(){
-
+    
 };
 
 void Usuario::cargartablero(){

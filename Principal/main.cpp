@@ -132,8 +132,9 @@ int main(){
                 cout<<"El usuario ya existe"<<endl;
             }
         }
-        /*if(opcion ==51){
-            if(usu.buscar_usuario()=true and usu.buscar_password()=true){
+        if(opcion ==51){
+            
+            /*if(usu.buscar_usuario()=true and usu.buscar_password()=true){
                 cin>>usu.cargartalbero();
                 cout<<"=============================================="<<endl;
                 cout<<"                   Jugar                      "<<endl;
@@ -216,9 +217,9 @@ int main(){
             }
             else{
                 cout<<"Por favor loguearse antes de jugar"<<endl;
-            }
+            }*/
 
-        }*/
+        }
 
         else if(opcion == 52){
             cout<<"Hasta Luego"<<endl;
