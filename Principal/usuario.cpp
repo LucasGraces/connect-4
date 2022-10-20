@@ -48,5 +48,15 @@ void Usuario::cargar_invitado(){
 };
 
 void Usuario::cargartablero(){
+    int col=0;
 
+   for(int l = 0; l < 42 ;l++){
+      cout<<"| "<<tablero[l];
+      col++;
+  
+      if(col==7) {
+         col=0;
+         cout<<" |"<<endl;
+      }
+   }
 };
