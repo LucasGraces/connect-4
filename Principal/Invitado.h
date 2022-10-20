@@ -7,17 +7,16 @@ class invitado{
     public:
         string nickname;
         string pwd;
-        string rol;
+        int rol;
 };
 
-class usuario : public invitado{
+class Usuario : public invitado{
    public:
         int resultado_loguin;
         int resultado_registro;
         string ganador;
         
         bool cargar_datos();
-        int cargar_datos(bool oper);
         void cargartablero();
 
    private:
@@ -26,7 +25,7 @@ class usuario : public invitado{
         
 };
 
-class administrador : public invitado{
+class Administrador : public invitado{
    public:
         string lista_archivos;
 };

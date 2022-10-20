@@ -8,12 +8,11 @@ using namespace std;
 
 int Archivo::buscar_usuario(){
     int estado = 0;
-    
-    usuario usu;
-
     string contenido;
     string contenido2;
-    Archivo archi;
+
+    Usuario usu;
+
     ifstream Archivo;
     ifstream Archivo2;
 
@@ -26,7 +25,6 @@ int Archivo::buscar_usuario(){
     if(usu.cargar_datos() == true){
         if(contenido == usu.nickname and contenido2 == usu.pwd){
             estado = 3;
-            return estado;
         }
         else if(contenido2 != usu.pwd and contenido == usu.nickname){
             estado = 1;
@@ -35,39 +33,55 @@ int Archivo::buscar_usuario(){
             estado = 2;
         }
     }
+    else{
+        estado = 0;
+    }
     Archivo.close();
     Archivo2.close();
     return estado;
 };
 
-int Archivo::registrar(string nom_us, string password){
+int Archivo::registrar_usuario(){
     int estado = 0;
-    
-    validar vali;
+
     ifstream fs("nickname_us.txt");
     string contenido;
     
     fs >> contenido;
     
-    if(vali.validar_datos(nom_us,password) == false){
-        estado = 3;
-    }
-    else if(contenido == nom_us){ 
-        estado = 2;
+    if(buscar_usuario() == 3){
+       estado = 4;
     }
     else{
         ofstream archivo;
         ofstream archivo1;
 
         archivo.open("contraseñas_us.txt",ios::app);
-        archivo<<password + "\n";
+        archivo<<pwd + "\n";
 
         archivo1.open("nickname_us.txt",ios::app);
-        archivo1<<nom_us + "\n";
+        archivo1<<nickname + "\n";
         
         estado = 1;
         archivo.close();
     }
     fs.close();
     return estado;
+};
+
+string Archivo::buscar_disponibles(){
+    string resultado;
+
+    string linea;
+
+    ifstream archivo;
+    archivo.open("nom_archivos.txt", ios::in);
+
+    while(!archivo.eof()){
+        getline(archivo,linea);
+        resultado = resultado + linea + "\n";
+    }
+
+    archivo.close();
+    return resultado;
 };
