@@ -78,7 +78,7 @@ void Prueba::tablero_juego(){
 bool Prueba::ver_ganador(){
    bool resultado = false;
 
-   for(int i = 0; i < 42; i = i + 4){
+   /*for(int i = 0; i < 42; i = i + 4){
       if(tablero[15] == tablero[29]
          && tablero[15] == tablero[22]
          && tablero[15] == tablero[36]
@@ -87,20 +87,16 @@ bool Prueba::ver_ganador(){
          }
       
    }
-   return resultado;
-/*for(int i = 0; i < 42; i = i + 4){
+   return resultado;*/
+   for(int i = 0; i < 294; i = i + 4){
       if(tablero[lineas[i]] == tablero[lineas[i + 1]]
          && tablero[lineas[i]] == tablero[lineas[i + 2]]
          && tablero[lineas[i]] == tablero[lineas[i + 3]]
-         && tablero[lineas[i] != '\0']){
+         && tablero[lineas[i]] != '\0'){
             resultado = true;
-            break;
-         }
-         else{
-            resultado = false;
-         }
+      }   
    }
-  */
+   return resultado;
 };
 
 void Prueba::agregarficha(bool jugadores){
