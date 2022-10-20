@@ -18,36 +18,36 @@ bool Gestor_juego::verificar_victoria(){
    return resultado;
 };
 
-int Gestor_juego::jugar_ficha(int colum){
+int Gestor_juego::jugar_ficha(int colum, bool jugadores){
     int o;
    int l;
-   ficha--;
+   colum--;
    bool flag = false;
    bool fla = false;
 
    if(jugadores == true){
-      for( o = ficha; o < 42; o = o + 7){
+      for( o = colum; o < 42; o = o + 7){
          if(tablero[o] != '\0'){
-            tablero[o-7] = 'X'; 
+            tablero[o - 7] = 'X'; 
             flag=true;
             break;
          }
       }
       if(flag==false){
-         tablero[35+ficha]='X';
+         tablero[35+colum]='X';
       }
 
    } 
   if(jugadores == false){
-     for( l = ficha; l < 42; l = l + 7){
+     for( l = colum; l < 42; l = l + 7){
          if(tablero[l] != '\0'){
-            tablero[l-7] = 'O'; 
+            tablero[l - 7] = 'O'; 
             fla=true;
             break;
          }
       }
       if(fla == false){
-         tablero[35+ficha] = 'O';
+         tablero[35 + colum] = 'O';
       }
    } 
 };

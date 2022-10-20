@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "Invitado.h"
+#include "Gestor_juego.h"
 
 using namespace std;
 
@@ -48,10 +49,12 @@ void Usuario::cargar_invitado(){
 };
 
 void Usuario::cargartablero(){
+    Gestor_juego gs;
+
     int col=0;
 
    for(int l = 0; l < 42 ;l++){
-      cout<<"| "<<tablero[l];
+      cout<<"| "<<gs.tablero[l];
       col++;
   
       if(col==7) {
