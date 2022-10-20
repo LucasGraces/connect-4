@@ -5,7 +5,7 @@
 
 using namespace std;
 
-bool usuario::cargar_datos(){
+bool Usuario::cargar_datos(){
     bool resultado = true;
 
     if(validar_usuario() == true){
@@ -17,7 +17,7 @@ bool usuario::cargar_datos(){
     return resultado;
 };
 
-bool usuario::validar_usuario(){
+bool Usuario::validar_usuario(){
     bool resultado = false;
 
     if(nickname.length() >= 8){

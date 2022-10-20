@@ -7,8 +7,8 @@ class Sistema{
     public:
         bool aprendizaje;
         
-        int visualizar_archivos();
-        string elegir_archivo();
+        string visualizar_archivos();
+        bool elegir_archivo(string nombre);
         bool generar(string nombre);
     
     private:

@@ -11,7 +11,7 @@ int Archivo::buscar_usuario(){
     string contenido;
     string contenido2;
 
-    usuario usu;
+    Usuario usu;
 
     ifstream Archivo;
     ifstream Archivo2;
@@ -67,4 +67,21 @@ int Archivo::registrar_usuario(){
     }
     fs.close();
     return estado;
+};
+
+string Archivo::buscar_disponibles(){
+    string resultado;
+
+    string linea;
+
+    ifstream archivo;
+    archivo.open("nom_archivos.txt", ios::in);
+
+    while(!archivo.eof()){
+        getline(archivo,linea);
+        resultado = resultado + linea + "\n";
+    }
+
+    archivo.close();
+    return resultado;
 };

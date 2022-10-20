@@ -6,30 +6,6 @@
 
 using namespace std;
 
-string Gestion_sistema::mostras_partidas(){
-    string linea;
-    string resultado;
-
-    ifstream archivo;
-    archivo.open("nom_archivos.txt", ios::in);
-
-    while(!archivo.eof()){
-        getline(archivo,linea);
-        resultado = resultado + linea + "\n";
-    }
-
-    archivo.close();
-    return resultado;
-};
-
-bool Gestion_sistema::prepara_archivo(){
-    bool resultado = true;
-    administrador admin;
-
-    admin.num_archivo = archivo_acargar;
-
-    return resultado;
-};
 
 bool Gestion_sistema::crear_archivo(){
     bool resultado = false;

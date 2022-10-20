@@ -10,7 +10,7 @@ class invitado{
         int rol;
 };
 
-class usuario : public invitado{
+class Usuario : public invitado{
    public:
         int resultado_loguin;
         int resultado_registro;
@@ -25,7 +25,7 @@ class usuario : public invitado{
         
 };
 
-class administrador : public invitado{
+class Administrador : public invitado{
    public:
         string lista_archivos;
 };

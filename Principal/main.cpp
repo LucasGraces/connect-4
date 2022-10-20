@@ -8,8 +8,8 @@
 
 using namespace std;
 
-usuario usu;
-administrador admin;
+Usuario usu;
+Administrador admin;
 Archivo ar;
 Sistema sis;
 Gestor_juego gj;
@@ -61,51 +61,47 @@ int main(){
                 cout<<"Nombre de usuario incorrecto"<<endl;
             }
             else if(ar.buscar_usuario() == 3 and usu.rol == 2){
+                int op_adm = 0;
                 cout<<"=============================================="<<endl;
                 cout<<"                   Bienvenido                 "<<endl;
                 cout<<"=============================================="<<endl;
                 cout<<endl;
                 cout<<"Los archivos existentes son: "<<endl;
-                gs.mostras_partidas();
+                sis.visualizar_archivos();
                 cout<<endl;
                 cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
                 cin.ignore();
-                cin>>admin.op_adm;
+                cin>>op_adm;
                 
-                if(admin.op_adm == 1){
+                if(op_adm == 1){
+                    string nom_archivo;
                     cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
                     cin.ignore();
-                    getline(cin,admin.num_archivo);
+                    getline(cin, nom_archivo);
 
-                    if(vali.validar_num() == true){
-                        if(gs.prepara_archivo() == true){
-                            cout<<"Archivo listo para su utilizacion"<<endl;
-                        }
+                    if(sis.elegir_archivo(nom_archivo) == true){
+                        cout<<"El archivo se selecciono correctamente"<<endl;
                     }
                     else{
-                        cout<<"El nombre es incorrecto"<<endl;
+                        cout<<""<<endl;
                     }
                 }
-                else if(admin.op_adm == 2){
+                else if(op_adm == 2){
+                    string nom_archivo;
                     cout<<"Ingrese el nombre del archivo"<<endl;
                     cin.ignore();
-                    getline(cin,admin.nom_archivo);
+                    getline(cin, nom_archivo);
 
-                    if(vali.validar_nom() == true){
-                        if(gs.crear_archivo() == true){
-                            cout<<"Archivo creado con exito"<<endl;
-                        }
-                        else{
-                            cout<<"Ocurrio un error"<<endl;
-                        }
-                    }
-                    else{
-                        cout<<"El archivo ya existe"<<endl;
+                    if(sis.generar(nom_archivo) == true){
+                        cout<<"El archivo fue creado correctamente"<<endl;
                     }
                 }
                 else{
                     cout<<"Opcion invalida"<<endl;
                 }
+            }
+            else if(ar.buscar_usuario() == 3 and usu.rol == 1){
+                cout<<"Ingreso exitoso"<<endl;
             }
         }
         if(opcion == 50){
