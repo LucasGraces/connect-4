@@ -5,19 +5,17 @@
 #include "Invitado.h"
 #include "Sistema.h"
 
-
 using namespace std;
 
-Usuario usu;
-Administrador admin;
-Archivo ar;
-Sistema sis;
-Gestor_juego gj;
-
-int opcion = 0;
 int main(){
-    char copcion;
+    Usuario usu;
+    Administrador admin;
+    Archivo ar;
+    Sistema sis;
+    Gestor_juego gj;
 
+    char copcion;
+    int opcion = 0;
     while(opcion != 52){
         cout<<"=============================================="<<endl;
         cout<<"                   Bienvenido                 "<<endl;
