@@ -56,10 +56,10 @@ int Archivo::registrar_usuario(){
         ofstream archivo;
         ofstream archivo1;
 
-        archivo.open("contraseñas_us.txt",ios::app);
+        archivo.open("password_us.txt",ios::app);
         archivo<<pwd + "\n";
 
-        archivo1.open("nickname_us.txt",ios::app);
+        archivo1.open("password.txt",ios::app);
         archivo1<<nickname + "\n";
         
         estado = 1;

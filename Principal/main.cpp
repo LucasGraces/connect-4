@@ -104,18 +104,17 @@ int main(){
         }
         if(opcion == 50){
             cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
-            cout<<"La contraseña mayor a 8 caracteres y no debe contener numeros"<<endl;
+            cout<<"La contrasena mayor a 8 caracteres y no debe contener numeros"<<endl;
 
             cout<<"Ingrese nombre de usuario"<<endl;
             cin.ignore();
             getline(cin,usu.nickname);
-            cout<<"Ingrese contraseña"<<endl;
+            cout<<"Ingrese contrasena"<<endl;
             getline(cin,usu.pwd);
 
-            usu.nickname = ar.nickname;
-            usu.pwd = ar.pwd;
-
             while(usu.nickname == "" or usu.pwd == "" or usu.cargar_datos() == false){
+                cout<<usu.nickname;
+                cout<<usu.pwd;
                 cout<<"Por favor vuelva a ingresar los datos correctamente"<<endl;
                 cout<<endl;
                 cout<<"Ingrese nombre de usuario"<<endl;

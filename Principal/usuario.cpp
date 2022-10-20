@@ -14,6 +14,7 @@ bool Usuario::cargar_datos(){
     }
     else{
         resultado = false;
+        cout<<"aca esta";
     }
     return resultado;
 };
@@ -25,9 +26,9 @@ bool Usuario::validar_usuario(){
         resultado = true;
     }
     else{
+
         resultado = false;
     }
-
     if(pwd.length() >= 8){
         for(int i=0; i < pwd.length(); i++){
             char a = pwd[i];
@@ -40,7 +41,6 @@ bool Usuario::validar_usuario(){
     else{
         resultado = false;
     }
-
     return resultado;
 };
 
