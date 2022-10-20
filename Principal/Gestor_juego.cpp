@@ -51,3 +51,4 @@ int Gestor_juego::jugar_ficha(int colum, bool jugadores){
       }
    } 
 };
+

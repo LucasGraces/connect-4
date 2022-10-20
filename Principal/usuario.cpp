@@ -45,10 +45,16 @@ bool Usuario::validar_usuario(){
 };
 
 void Usuario::cargar_invitado(){
-    
+    Usuario usu;
+
+    string jugador_1;
+    string jugador_2;
+
+    jugador_1 = usu.nickname;
 };
 
 void Usuario::cargartablero(){
+    cargar_invitado();
     Gestor_juego gs;
 
     int col=0;
