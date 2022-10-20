@@ -7,7 +7,7 @@ class invitado{
     public:
         string nickname;
         string pwd;
-        string rol;
+        int rol;
 };
 
 class usuario : public invitado{
@@ -17,7 +17,6 @@ class usuario : public invitado{
         string ganador;
         
         bool cargar_datos();
-        int cargar_datos(bool oper);
         void cargartablero();
 
    private:

@@ -7,6 +7,7 @@ using namespace std;
 
 bool usuario::cargar_datos(){
     bool resultado = true;
+
     if(validar_usuario() == true){
         resultado = true;
     }

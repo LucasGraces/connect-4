@@ -26,6 +26,7 @@ int main(){
         cout<<"Ingrese su opcion del juego"<<endl;
         cout<<"1- Ingreso"<<endl;
         cout<<"2- Registrarse"<<endl;
+        cout<<"3- Jugar"<<endl; 
         cout<<"4- Salir"<<endl;
         cin>>copcion;
         opcion = (int)copcion;
@@ -40,7 +41,7 @@ int main(){
             cout<<"1- Usuario"<<endl;
             cout<<"2- Administrador"<<endl;
             cin.ignore();
-            getline(cin,usu.rol);
+            cin>>usu.rol;
 
             while(usu.nickname == "" or usu.pwd == "" or usu.cargar_datos() == false){
                 cout<<"Por favor ingrese correctamente los datos"<<endl;
@@ -50,10 +51,16 @@ int main(){
                 cout<<"Ingrese contraseña"<<endl;
                 getline(cin,usu.pwd);
             }
-            if(usu.buscar_usuario(usu.nickname) == 0 and vali.buscar_password(usu.pwd) == 0){
-                cout<<"El usuario existe"<<endl;
+            if(ar.buscar_usuario() == 0){
+                cout<<"Formato incorrecto"<<endl;
             }
-            else if(vali.buscar_usuario(usu.nickname) == 1 and vali.buscar_password(usu.pwd) == 1){
+            else if(ar.buscar_usuario() == 1){
+                cout<<"Contraseña incorrecta"<<endl;
+            }
+            else if(ar.buscar_usuario() == 2){
+                cout<<"Nombre de usuario incorrecto"<<endl;
+            }
+            else if(ar.buscar_usuario() == 3 and usu.rol == 2){
                 cout<<"=============================================="<<endl;
                 cout<<"                   Bienvenido                 "<<endl;
                 cout<<"=============================================="<<endl;
@@ -100,11 +107,7 @@ int main(){
                     cout<<"Opcion invalida"<<endl;
                 }
             }
-            else{
-                cout<<"La contraseña o el usuario son incorrectos"<<endl;
-            }
         }
-        
         if(opcion == 50){
             cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
             cout<<"La contraseña mayor a 8 caracteres y no debe contener numeros"<<endl;
@@ -115,7 +118,10 @@ int main(){
             cout<<"Ingrese contraseña"<<endl;
             getline(cin,usu.pwd);
 
-            while(usu.nickname == "" or usu.pwd == ""){
+            usu.nickname = ar.nickname;
+            usu.pwd = ar.pwd;
+
+            while(usu.nickname == "" or usu.pwd == "" or usu.cargar_datos() == false){
                 cout<<"Por favor vuelva a ingresar los datos correctamente"<<endl;
                 cout<<endl;
                 cout<<"Ingrese nombre de usuario"<<endl;
@@ -123,14 +129,11 @@ int main(){
                 cout<<"Ingrese contraseña"<<endl;
                 getline(cin,usu.nickname);
             }
-            if(ar.registrar(usu.nickname, usu.pwd) == 1){
-                cout<<"El usuario fue registrado"<<endl;
+            if(ar.registrar_usuario() == 1){
+                cout<<"El usuario fue registrado exitosamente"<<endl;
             }
-            else if(ar.registrar(usu.nickname, usu.pwd) == 2){
+            else{
                 cout<<"El usuario ya existe"<<endl;
-            }
-            else if(ar.registrar(usu.nickname, usu.pwd) == 3){
-                cout<<"la contraseña no cumple con los requerimientos"<<endl;
             }
         }
         /*if(opcion ==51){
