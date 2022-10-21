@@ -64,7 +64,13 @@ void Prueba::tablero(){
 void Prueba::tablero_juego(){
   
    int col=0;
-
+   int numeros[7] = {1,2,3,4,5,6,7};
+   cout<<" ";
+   for(int i=0; i< 7;i++){
+      cout<<numeros[i];
+      cout<<" ";
+   }
+   cout<<"\n";
    for(int l = 0; l < 42 ;l++){
       cout<<"| "<<tablero[l];
       col++;
@@ -95,7 +101,6 @@ void Prueba::agregarficha(bool jugadores){
    ficha--;
    bool flag = false;
    bool fla = false;
-
    if(jugadores == true){
       for( o = ficha; o < 42; o = o + 7){
          if(tablero[o] != '\0'){
@@ -107,7 +112,6 @@ void Prueba::agregarficha(bool jugadores){
       if(flag==false){
          tablero[35+ficha]='X';
       }
-
    } 
   if(jugadores == false){
      for( l = ficha; l < 42; l = l + 7){
