@@ -9,7 +9,11 @@ using namespace std;
 
 string Sistema::visualizar_archivos(){
     Archivo archi;
-    return archi.buscar_disponibles();
+    string resultado;
+
+    resultado = archi.buscar_disponibles();
+
+    return resultado; 
 };
 
 bool Sistema::elegir_archivo(string nombre){
@@ -26,7 +30,7 @@ bool Sistema::generar(string nombre){
     string nombre2 = nombre + ".txt";
 
     ofstream archivo;
-    archivo.open(nombre,ios::trunc);
+    archivo.open(nombre2,ios::trunc);
 
     if(!archivo.fail()){
         resultado = true;
