@@ -33,13 +33,14 @@ int main(){
             cout<<"ingrese usuario"<<endl;
             cin.ignore();
             getline(cin,usu.nickname);
+            cout<<endl;
             cout<<"ingrese contraseña"<<endl;
             getline(cin,usu.pwd);
+            cout<<endl;
             cout<<"Ingrese su rol"<<endl;
             cout<<"1- Usuario"<<endl;
             cout<<"2- Administrador"<<endl;
             cin>>usu.rol;
-
 
             if(usu.validar_usuario(1) == true){
                 if(usu.resul_vali == 3 and usu.rol == 1){
@@ -51,83 +52,77 @@ int main(){
                 else if(usu.resul_vali == 1){
                     cout<<"La contraseña ingresada no existe"<<endl;
                 }
-                else{
-                    cout<<"No hay nada"<<endl;
+                else if(usu.resul_vali == 3 and usu.rol == 2){
+                    int op_adm = 0;
+                    cout<<"=============================================="<<endl;
+                    cout<<"                   Bienvenido                 "<<endl;
+                    cout<<"=============================================="<<endl;
+                    cout<<endl;
+                    cout<<"Los archivos existentes son: "<<endl;
+                    sis.visualizar_archivos();
+                    cout<<endl;
+                    cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
+                    cin.ignore();
+                    cin>>op_adm;
+                    
+                    if(op_adm == 1){
+                        string nom_archivo;
+                        cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
+                        cin.ignore();
+                        getline(cin, nom_archivo);
+
+                        if(sis.elegir_archivo(nom_archivo) == true){
+                            cout<<"El archivo se selecciono correctamente"<<endl;
+                        }
+                        else{
+                            cout<<""<<endl;
+                        }
+                    }
+                    else if(op_adm == 2){
+                        string nom_archivo;
+                        cout<<"Ingrese el nombre del archivo"<<endl;
+                        cin.ignore();
+                        getline(cin, nom_archivo);
+
+                        if(sis.generar(nom_archivo) == true){
+                            cout<<"El archivo fue creado correctamente"<<endl;
+                        }
+                    }
+                    else{
+                        cout<<"Opcion invalida"<<endl;
+                    }
                 }
             }
             else{
                 cout<<"Formato incorrecto"<<endl;
             }
-            /*else if(vbuscar_usuario == 3 and usu.rol == 2){
-                int op_adm = 0;
-                cout<<"=============================================="<<endl;
-                cout<<"                   Bienvenido                 "<<endl;
-                cout<<"=============================================="<<endl;
-                cout<<endl;
-                cout<<"Los archivos existentes son: "<<endl;
-                sis.visualizar_archivos();
-                cout<<endl;
-                cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
-                cin.ignore();
-                cin>>op_adm;
-                
-                if(op_adm == 1){
-                    string nom_archivo;
-                    cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
-                    cin.ignore();
-                    getline(cin, nom_archivo);
-
-                    if(sis.elegir_archivo(nom_archivo) == true){
-                        cout<<"El archivo se selecciono correctamente"<<endl;
-                    }
-                    else{
-                        cout<<""<<endl;
-                    }
-                }
-                else if(op_adm == 2){
-                    string nom_archivo;
-                    cout<<"Ingrese el nombre del archivo"<<endl;
-                    cin.ignore();
-                    getline(cin, nom_archivo);
-
-                    if(sis.generar(nom_archivo) == true){
-                        cout<<"El archivo fue creado correctamente"<<endl;
-                    }
-                }
-                else{
-                    cout<<"Opcion invalida"<<endl;
-                }
-            }*/
         }
         if(opcion == 50){
             cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
             cout<<"La contrasena mayor a 8 caracteres y no debe contener numeros"<<endl;
-
+            cout<<endl;
             cout<<"Ingrese nombre de usuario"<<endl;
             cin.ignore();
             getline(cin,usu.nickname);
+            cout<<endl;
             cout<<"Ingrese contrasena"<<endl;
             getline(cin,usu.pwd);
+            cout<<endl;
 
-            while(usu.nickname == "" or usu.pwd == "" or usu.cargar_datos() == false){
-                cout<<usu.nickname;
-                cout<<usu.pwd;
-                cout<<"Por favor vuelva a ingresar los datos correctamente"<<endl;
-                cout<<endl;
-                cout<<"Ingrese nombre de usuario"<<endl;
-                getline(cin,usu.nickname);
-                cout<<"Ingrese contraseña"<<endl;
-                getline(cin,usu.pwd);
-            }
-            if(ar.registrar_usuario(usu.nickname, usu.pwd) == 1){
-                cout<<"El usuario fue registrado exitosamente"<<endl;
+            if(usu.validar_usuario(2) == true){
+                if(usu.resul_vali == 1){
+                    cout<<"El usuario fue registrado exitosamente"<<endl;
+                }
+                else{
+                    cout<<"El usuario ya existe"<<endl;
+                }
             }
             else{
-                cout<<"El usuario ya existe"<<endl;
+                cout<<"El formato ingresado es incorrecto"<<endl;
             }
         }
         if(opcion ==51){
-            if(ar.buscar_usuario() == 3){
+            /*if(ar.buscar_usuario() == 3){
                 char aopcion;
                 int opcion2;
                 cout<<"=============================================="<<endl;
@@ -141,7 +136,7 @@ int main(){
                 opcion2 = (int)aopcion;
 
                 if(opcion2 == 49){
-                    /*cout<<"================================================="<<endl;
+                    cout<<"================================================="<<endl;
                     cout<<"           Juego contra la computadora           "<<endl;
                     cout<<"================================================="<<endl;
                     cin>>gj.jugar_ia();
@@ -158,7 +153,7 @@ int main(){
                     if(sis.fichas == 48){
                         cout<<"El juego termino en empate"<<endl;
 
-                    }*/
+                    }
 
                 }
                 if(opcion2 == 50){
@@ -189,7 +184,7 @@ int main(){
             else{
                 cout<<"Por favor loguearse antes de jugar"<<endl;
             }
-        
+            */
         }
         else if(opcion == 52){
             cout<<"Hasta Luego"<<endl;

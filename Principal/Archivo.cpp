@@ -6,30 +6,27 @@
 
 using namespace std;
 
-int Archivo::buscar_usuario(){
+int Archivo::buscar_usuario(string nick, string pass){
     int estado = 0;
     string contenido;
     string contenido2;
-
-    Usuario usu;
 
     ifstream Archivo;
     ifstream Archivo2;
 
     Archivo.open("nickname_us.txt", ios::in);
-    Archivo2.open("contraseñas_us.txt", ios::in);
+    Archivo2.open("password_us.txt", ios::in);
 
     Archivo >> contenido;
     Archivo2 >> contenido2;
-    cout<<"N "<<usu.nickname<<endl;
-    cout<<"P "<<usu.pwd<<endl;
-    if(contenido == usu.nickname and contenido2 == usu.pwd){
+
+    if(contenido == nick and contenido2 == pass){
         estado = 3;
     }
-    else if(contenido2 != usu.pwd and contenido == usu.nickname){
+    else if(contenido2 != pass and contenido == nick){
         estado = 1;
     }
-    else if(contenido != usu.nickname and contenido2 == usu.pwd){
+    else if(contenido != nick and contenido2 == pass){
         estado = 2;
     }
     
@@ -40,13 +37,13 @@ int Archivo::buscar_usuario(){
 
 int Archivo::registrar_usuario(string nick, string pass){
     int estado = 0;
-
+    
     ifstream fs("nickname_us.txt");
     string contenido;
     
     fs >> contenido;
     
-    if(buscar_usuario() == 3){
+    if(buscar_usuario(nick,pass) == 3){
        estado = 4;
     }
     else{

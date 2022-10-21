@@ -14,22 +14,30 @@ bool Usuario::cargar_datos(){
 bool Usuario::validar_usuario(int opcion){
     // Si la opcion es igual 1 es para ver si esta logueado, 2 si es para registrar.
     bool resultado = false;
+    bool bandera = false;
+    
     Archivo archi;
-
-    if(opcion == 1){    
-        if(nickname.length() >= 8 and pwd.length() >= 8){
-            for(int i = 0; i < pwd.length(); i++){
-                char a = pwd[i];
-                int letra = (int)a;
-                if(letra >= 65 || letra <= 90 || (letra >= 97 && letra <= 122) || letra == 32 || letra == 95){
-                    resul_vali = archi.buscar_usuario();
-                    resultado = true;
-                }
+    
+    if(nickname.length() >= 8 and pwd.length() >= 8 and nickname != "" and pwd != ""){
+        for(int i = 0; i < pwd.length(); i++){
+            char a = pwd[i];
+            int letra = (int)a;
+            if(letra >= 65 || letra <= 90 || (letra >= 97 && letra <= 122) || letra == 32 || letra == 95){
+                resultado = true;
+                bandera = true;
             }
         }
-        else{
-            resultado = false;
+        if(bandera == true){
+            if(opcion == 1){
+                resul_vali = archi.buscar_usuario(nickname, pwd);
+            }
+            else{
+                resul_vali = archi.registrar_usuario(nickname, pwd);
+            }
         }
+    }
+    else{
+        resultado = false;
     }
     return resultado;
 };
