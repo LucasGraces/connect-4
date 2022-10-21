@@ -5,19 +5,17 @@
 #include "Invitado.h"
 #include "Sistema.h"
 
-
 using namespace std;
 
-Usuario usu;
-Administrador admin;
-Archivo ar;
-Sistema sis;
-Gestor_juego gj;
-
-int opcion = 0;
 int main(){
-    char copcion;
+    Usuario usu;
+    Administrador admin;
+    Archivo ar;
+    Sistema sis;
+    Gestor_juego gj;
 
+    char copcion;
+    int opcion = 0;
     while(opcion != 52){
         cout<<"=============================================="<<endl;
         cout<<"                   Bienvenido                 "<<endl;
@@ -106,18 +104,17 @@ int main(){
         }
         if(opcion == 50){
             cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
-            cout<<"La contraseña mayor a 8 caracteres y no debe contener numeros"<<endl;
+            cout<<"La contrasena mayor a 8 caracteres y no debe contener numeros"<<endl;
 
             cout<<"Ingrese nombre de usuario"<<endl;
             cin.ignore();
             getline(cin,usu.nickname);
-            cout<<"Ingrese contraseña"<<endl;
+            cout<<"Ingrese contrasena"<<endl;
             getline(cin,usu.pwd);
 
-            usu.nickname = ar.nickname;
-            usu.pwd = ar.pwd;
-
             while(usu.nickname == "" or usu.pwd == "" or usu.cargar_datos() == false){
+                cout<<usu.nickname;
+                cout<<usu.pwd;
                 cout<<"Por favor vuelva a ingresar los datos correctamente"<<endl;
                 cout<<endl;
                 cout<<"Ingrese nombre de usuario"<<endl;
@@ -133,20 +130,21 @@ int main(){
             }
         }
         if(opcion ==51){
-            
-            /*if(usu.buscar_usuario()=true and usu.buscar_password()=true){
-                cin>>usu.cargartalbero();
+            if(ar.buscar_usuario() == 3){
+                char aopcion;
+                int opcion2;
                 cout<<"=============================================="<<endl;
-                cout<<"                   Jugar                      "<<endl;
+                cout<<"             METODOS DE JUEGOS                "<<endl;
                 cout<<"=============================================="<<endl;
                 cout<<endl;
                 cout<<"ingrese 1 si quiere jugar contra la computadora"<<endl;
                 cout<<"ingrese 2 si quiere jugar contra otra persona"<<endl;
-                cin>>usu.aopcion;
+                cin>>aopcion;
                 cin.ignore();
+                opcion2 = (int)aopcion;
 
-                if(usu.elegir_modojuego() = 49){
-                    cout<<"================================================="<<endl;
+                if(opcion2 == 49){
+                    /*cout<<"================================================="<<endl;
                     cout<<"           Juego contra la computadora           "<<endl;
                     cout<<"================================================="<<endl;
                     cin>>gj.jugar_ia();
@@ -163,64 +161,39 @@ int main(){
                     if(sis.fichas == 48){
                         cout<<"El juego termino en empate"<<endl;
 
-                    }
+                    }*/
 
                 }
-                if(usu.elegir_modojuego() == 50){
-                    while(usu.player2 != 2){    
+                if(opcion2 == 50){
+                    int juego_in_op = 0;
+                    bool jugador = true;
+                    while(juego_in_op != 2){
+                        int columna = 0;
                         cout<<"================================================="<<endl;
                         cout<<"           Juego contra otra persona             "<<endl;
                         cout<<"================================================="<<endl;
                         cout<<endl;
-                        cout<<"1- si el player 2 esta registrado?"<<endl;
-                        cout<<"2- Si quiere salir"<<endl;
-                        cin.ignore();
-                        cin>>usu.player2;
-
-                            if(usu.player2 == 49){
-                                cout<<"ingrese usuario"<<endl;
-                                cin.ignore();
-                                getline(cin,usu.nickname);
-                                cout<<"ingrese contraseña"<<endl;
-                                cin.ignore();
-                                getline(cin,usu.pwd);
-
-
-                                while(usu.nickname == "" or usu.pwd == "" or usu.datos(usu.nickname,usu.pwd) == false){
-                                    cout<<"Por favor ingrese correctamente los datos"<<endl;
-                                    cout<<endl;
-                                    cout<<"Ingrese nombre de usuario"<<endl;
-                                    getline(cin,usu.nickname);
-                                    cout<<"Ingrese contraseña"<<endl;
-                                    getline(cin,usu.pwd);
-                                }
-                                if(vali.buscar_usuario(usu.nickname) == true ){ //and vali.buscar_password(usu.pwd) == true){
-                                    cout<<"El usuario existe"<<endl;
-                                }
-                                else if(vali.buscar_usuario(usu.nickname) == false){
-                                    cout<<"EL usuario no existe"<<endl;
-                                }
-                                else if(vali.buscar_password(usu.pwd) == false){
-                                    cout<<"La contraseña no existe"<<endl;
-                                
-                                }
-                            }
-
-                        if(usu.player2 == 50){
+                        usu.cargartablero();
+                        cout<<"Juega "<<usu.nickname<<endl;
+                        cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
+                        cin>>columna;
+                        
+                        gj.jugar_ficha(columna, jugador);
+                        if(gj.verificar_victoria() == false){
+                            jugador=!jugador;
+                            system("cls");
                         }
-
+                        else{
+                            cout<<"Gano el jugador"<<endl;
+                        }
                     }
-
                 }
-            
-                
             }
             else{
                 cout<<"Por favor loguearse antes de jugar"<<endl;
-            }*/
+            }
 
         }
-
         else if(opcion == 52){
             cout<<"Hasta Luego"<<endl;
         }
