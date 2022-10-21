@@ -21,27 +21,24 @@ int Archivo::buscar_usuario(){
 
     Archivo >> contenido;
     Archivo2 >> contenido2;
-
-    if(usu.cargar_datos() == true){
-        if(contenido == usu.nickname and contenido2 == usu.pwd){
-            estado = 3;
-        }
-        else if(contenido2 != usu.pwd and contenido == usu.nickname){
-            estado = 1;
-        }
-        else if(contenido != usu.nickname and contenido2 == usu.pwd){
-            estado = 2;
-        }
+    cout<<"N "<<usu.nickname<<endl;
+    cout<<"P "<<usu.pwd<<endl;
+    if(contenido == usu.nickname and contenido2 == usu.pwd){
+        estado = 3;
     }
-    else{
-        estado = 0;
+    else if(contenido2 != usu.pwd and contenido == usu.nickname){
+        estado = 1;
     }
+    else if(contenido != usu.nickname and contenido2 == usu.pwd){
+        estado = 2;
+    }
+    
     Archivo.close();
     Archivo2.close();
     return estado;
 };
 
-int Archivo::registrar_usuario(){
+int Archivo::registrar_usuario(string nick, string pass){
     int estado = 0;
 
     ifstream fs("nickname_us.txt");
@@ -57,10 +54,10 @@ int Archivo::registrar_usuario(){
         ofstream archivo1;
 
         archivo.open("password_us.txt",ios::app);
-        archivo<<pwd + "\n";
+        archivo<<pass + "\n";
 
-        archivo1.open("password.txt",ios::app);
-        archivo1<<nickname + "\n";
+        archivo1.open("nickname_us.txt",ios::app);
+        archivo1<<nick + "\n";
         
         estado = 1;
         archivo.close();

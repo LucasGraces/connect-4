@@ -12,17 +12,17 @@ class invitado{
 
 class Usuario : public invitado{
    public:
-        int resultado_loguin;
-        int resultado_registro;
-        string ganador;
-        
-        bool cargar_datos();
-        void cargartablero();
+     int resultado_loguin;
+     int resultado_registro;
+     int resul_vali;
+     string ganador;
+     
+     bool cargar_datos();
+     void cargartablero();
+     bool validar_usuario(int opcion);
 
    private:
-        void cargar_invitado();
-        bool validar_usuario();
-        
+     void cargar_invitado();
 };
 
 class Administrador : public invitado{

@@ -3,42 +3,33 @@
 #include <fstream>
 #include "Invitado.h"
 #include "Gestor_juego.h"
+#include "Archivo.h"
 
 using namespace std;
 
 bool Usuario::cargar_datos(){
-    bool resultado = true;
 
-    if(validar_usuario() == true){
-        resultado = true;
-    }
-    else{
-        resultado = false;
-    }
-    return resultado;
 };
 
-bool Usuario::validar_usuario(){
+bool Usuario::validar_usuario(int opcion){
+    // Si la opcion es igual 1 es para ver si esta logueado, 2 si es para registrar.
     bool resultado = false;
+    Archivo archi;
 
-    if(nickname.length() >= 8){
-        resultado = true;
-    }
-    else{
-
-        resultado = false;
-    }
-    if(pwd.length() >= 8){
-        for(int i=0; i < pwd.length(); i++){
-            char a = pwd[i];
-			int letra = (int)a;
-            if(letra >= 65 || letra <= 90 || (letra >= 97 && letra <= 122) || letra == 32 || letra == 95){
-                resultado=true;
+    if(opcion == 1){    
+        if(nickname.length() >= 8 and pwd.length() >= 8){
+            for(int i = 0; i < pwd.length(); i++){
+                char a = pwd[i];
+                int letra = (int)a;
+                if(letra >= 65 || letra <= 90 || (letra >= 97 && letra <= 122) || letra == 32 || letra == 95){
+                    resul_vali = archi.buscar_usuario();
+                    resultado = true;
+                }
             }
         }
-    }
-    else{
-        resultado = false;
+        else{
+            resultado = false;
+        }
     }
     return resultado;
 };

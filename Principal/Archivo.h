@@ -9,7 +9,7 @@ class Archivo{
         string pwd;
         string rol;
         
-        int registrar_usuario(); //Metodo para grabar tanto el nickname y la contraseña en el archivo.
+        int registrar_usuario(string nick, string pass); //Metodo para grabar tanto el nickname y la contraseña en el archivo.
         int buscar_usuario();
         string buscar_disponibles();
         int elegir_aprendizaje();
