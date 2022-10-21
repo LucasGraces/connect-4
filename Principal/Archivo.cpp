@@ -65,7 +65,6 @@ int Archivo::registrar_usuario(string nick, string pass){
 
 string Archivo::buscar_disponibles(){
     string resultado;
-
     string linea;
 
     ifstream archivo;
@@ -75,7 +74,6 @@ string Archivo::buscar_disponibles(){
         getline(archivo,linea);
         resultado = resultado + linea + "\n";
     }
-
     archivo.close();
     return resultado;
 };

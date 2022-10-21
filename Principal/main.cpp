@@ -17,6 +17,7 @@ int main(){
     char copcion;
     int opcion = 0;
     while(opcion != 52){
+        cout<<endl;
         cout<<"=============================================="<<endl;
         cout<<"                   Bienvenido                 "<<endl;
         cout<<"=============================================="<<endl;
@@ -59,7 +60,7 @@ int main(){
                     cout<<"=============================================="<<endl;
                     cout<<endl;
                     cout<<"Los archivos existentes son: "<<endl;
-                    sis.visualizar_archivos();
+                    cout<<sis.visualizar_archivos()<<endl;
                     cout<<endl;
                     cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
                     cin.ignore();
