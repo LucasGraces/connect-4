@@ -14,7 +14,6 @@ bool Usuario::cargar_datos(){
     }
     else{
         resultado = false;
-        cout<<"aca esta";
     }
     return resultado;
 };

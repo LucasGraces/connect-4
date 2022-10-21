@@ -6,6 +6,7 @@ using namespace std;
 
 bool Gestor_juego::verificar_victoria(){
     bool resultado = false;
+   
     
     for(int i = 0; i < 294; i = i + 4){
         if(tablero[lineas[i]] == tablero[lineas[i + 1]]
