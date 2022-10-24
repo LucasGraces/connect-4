@@ -18,7 +18,7 @@ bool Gestor_juego::verificar_victoria(){
    return resultado;
 };
 
-int Gestor_juego::jugar_ficha(int colum, bool jugadores){
+int Gestor_juego::jugar_ficha(int colum, bool jugadores, char tablero[]){
    int o;
    int l;
    colum--;
@@ -52,3 +52,8 @@ int Gestor_juego::jugar_ficha(int colum, bool jugadores){
    } 
 };
 
+void Gestor_juego::setear_tablero(char tablero[]){
+   for(int i = 0; i < 42; i++){ 
+      tablero[i] = 0;
+   }
+};

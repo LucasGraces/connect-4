@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <vector>
 #include "Archivo.h"
 #include "Gestor_juego.h"
 #include "Invitado.h"
@@ -165,24 +166,46 @@ int main(){
                 if(opcion2 == 50){
                     int juego_in_op = 0;
                     bool jugador = true;
-                    while(juego_in_op != 2){
+
+                    while(juego_in_op != 2 or juego_in_op == 1){
                         int columna = 0;
+        
+                        if(juego_in_op == 1){
+                            gj.setear_tablero(gj.tablero);
+                            juego_in_op = 0;
+                        }
                         cout<<"================================================="<<endl;
                         cout<<"           Juego contra otra persona             "<<endl;
                         cout<<"================================================="<<endl;
                         cout<<endl;
-                        usu.cargartablero();
-                        cout<<"Juega "<<usu.nickname<<endl;
+                        usu.cargartablero(gj.tablero);
+                        if(jugador == true){
+                            cout<<"Juega "<<usu.nickname<<endl;
+                        }
+                        else{
+                            cout<<"Juega invitado"<<endl;
+                        }
                         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
                         cin>>columna;
                         
-                        gj.jugar_ficha(columna, jugador);
+                        gj.jugar_ficha(columna, jugador, gj.tablero);
                         if(gj.verificar_victoria() == false){
                             jugador =! jugador;
                             system("cls");
                         }
                         else{
-                            cout<<"Gano el jugador"<<endl;
+                            system("cls");
+                            cout<<"================================================="<<endl;
+                            cout<<"               FELICIDADES GANASTE               "<<endl;
+                            cout<<"================================================="<<endl;
+                            cout<<endl;
+                            usu.cargartablero(gj.tablero);
+                            if(jugador == true){
+                                cout<<"Gano el jugador "<<usu.nickname<<endl;
+                            }
+                            else{
+                                cout<<"Gano el jugador invitado"<<endl;
+                            }
                             cout<<endl;
                             cout<<"Se desea volver a jugar? "<<endl;
                             cout<<"1- Volver a jugar"<<endl;

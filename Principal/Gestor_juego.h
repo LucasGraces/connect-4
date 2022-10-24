@@ -17,7 +17,8 @@ class Gestor_juego{
                         36,5,11,17,23,11,17,23,29,17,23,29,35,4,10,16,22,10,16,22,28,3,9,15,21};
 
         string juego_ia();
-        int jugar_ficha(int colum, bool jugadores);
+        int jugar_ficha(int colum, bool jugadores, char tablero[]);
         bool verificar_victoria();
+        void setear_tablero(char tablero[]);
         
 };

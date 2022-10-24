@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-
 using namespace std;
 
 class invitado{
@@ -16,9 +15,9 @@ class Usuario : public invitado{
      int resultado_registro;
      int resul_vali;
      string ganador;
-     
+
      bool cargar_datos();
-     void cargartablero();
+     void cargartablero(char tablero[]);
      bool validar_usuario(int opcion);
 
    private:

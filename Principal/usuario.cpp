@@ -51,14 +51,11 @@ void Usuario::cargar_invitado(){
     jugador_1 = usu.nickname;
 };
 
-void Usuario::cargartablero(){
-    cargar_invitado();
-    Gestor_juego gs;
-
+void Usuario::cargartablero(char tablero[]){
     int col=0;
 
    for(int l = 0; l < 42 ;l++){
-      cout<<"| "<<gs.tablero[l];
+      cout<<"| "<<tablero[l];
       col++;
   
       if(col==7) {
