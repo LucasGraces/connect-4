@@ -19,7 +19,7 @@ bool Gestor_juego::verificar_victoria(){
 };
 
 int Gestor_juego::jugar_ficha(int colum, bool jugadores){
-    int o;
+   int o;
    int l;
    colum--;
    bool flag = false;
