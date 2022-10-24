@@ -68,7 +68,7 @@ void Prueba::tablero_juego(){
    cout<<" ";
    for(int i=0; i< 7;i++){
       cout<<numeros[i];
-      cout<<" ";
+      cout<<"  ";
    }
    cout<<"\n";
    for(int l = 0; l < 42 ;l++){

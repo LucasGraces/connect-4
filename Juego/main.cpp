@@ -21,7 +21,7 @@ int main(){
         pr.agregarficha(jugador);
         if(pr.ver_ganador() == false){
             jugador=!jugador;
-             system("cls");
+             //system("cls");
         
             
         }
