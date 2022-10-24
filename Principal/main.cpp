@@ -16,6 +16,7 @@ int main(){
 
     char copcion;
     int opcion = 0;
+    int registro = 0;
     while(opcion != 52){
         cout<<endl;
         cout<<"=============================================="<<endl;
@@ -46,6 +47,7 @@ int main(){
             if(usu.validar_usuario(1) == true){
                 if(usu.resul_vali == 3 and usu.rol == 1){
                     cout<<"Ingreso exitoso"<<endl;
+                    registro = 1;
                 }
                 else if(usu.resul_vali == 2){
                     cout<<"El nombre de usuario ingresado no existe"<<endl;
@@ -93,6 +95,9 @@ int main(){
                         cout<<"Opcion invalida"<<endl;
                     }
                 }
+                else{
+                    cout<<"Ocurrio un error"<<endl;
+                }
             }
             else{
                 cout<<"Formato incorrecto"<<endl;
@@ -123,7 +128,7 @@ int main(){
             }
         }
         if(opcion ==51){
-            /*if(ar.buscar_usuario() == 3){
+            if(registro == 1){
                 char aopcion;
                 int opcion2;
                 cout<<"=============================================="<<endl;
@@ -136,7 +141,7 @@ int main(){
                 cin.ignore();
                 opcion2 = (int)aopcion;
 
-                if(opcion2 == 49){
+                if(opcion2 == 49){/*
                     cout<<"================================================="<<endl;
                     cout<<"           Juego contra la computadora           "<<endl;
                     cout<<"================================================="<<endl;
@@ -155,7 +160,7 @@ int main(){
                         cout<<"El juego termino en empate"<<endl;
 
                     }
-
+                */
                 }
                 if(opcion2 == 50){
                     int juego_in_op = 0;
@@ -185,7 +190,6 @@ int main(){
             else{
                 cout<<"Por favor loguearse antes de jugar"<<endl;
             }
-            */
         }
         else if(opcion == 52){
             cout<<"Hasta Luego"<<endl;

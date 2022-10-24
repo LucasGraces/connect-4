@@ -6,8 +6,7 @@ using namespace std;
 
 bool Gestor_juego::verificar_victoria(){
     bool resultado = false;
-   
-    
+
     for(int i = 0; i < 294; i = i + 4){
         if(tablero[lineas[i]] == tablero[lineas[i + 1]]
         && tablero[lineas[i]] == tablero[lineas[i + 2]]
@@ -30,12 +29,12 @@ int Gestor_juego::jugar_ficha(int colum, bool jugadores){
       for( o = colum; o < 42; o = o + 7){
          if(tablero[o] != '\0'){
             tablero[o - 7] = 'X'; 
-            flag=true;
+            flag = true;
             break;
          }
       }
       if(flag==false){
-         tablero[35+colum]='X';
+         tablero[35 + colum] = 'X';
       }
 
    } 
@@ -43,7 +42,7 @@ int Gestor_juego::jugar_ficha(int colum, bool jugadores){
      for( l = colum; l < 42; l = l + 7){
          if(tablero[l] != '\0'){
             tablero[l - 7] = 'O'; 
-            fla=true;
+            fla = true;
             break;
          }
       }
