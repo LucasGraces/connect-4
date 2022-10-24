@@ -178,11 +178,16 @@ int main(){
                         
                         gj.jugar_ficha(columna, jugador);
                         if(gj.verificar_victoria() == false){
-                            jugador=!jugador;
+                            jugador =! jugador;
                             system("cls");
                         }
                         else{
                             cout<<"Gano el jugador"<<endl;
+                            cout<<endl;
+                            cout<<"Se desea volver a jugar? "<<endl;
+                            cout<<"1- Volver a jugar"<<endl;
+                            cout<<"2- Salir"<<endl;
+                            cin>>juego_in_op;
                         }
                     }
                 }
