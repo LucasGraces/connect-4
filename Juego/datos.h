@@ -22,4 +22,5 @@ class Prueba{
         void tablero_juego();
         void agregarficha(bool jugadores);
         bool ver_ganador();
+        void juego_ia(bool jugadores);
 };
