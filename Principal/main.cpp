@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 #include "Archivo.h"
 #include "Gestor_juego.h"
 #include "Invitado.h"
