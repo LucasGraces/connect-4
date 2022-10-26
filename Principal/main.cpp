@@ -8,6 +8,8 @@
 
 using namespace std;
 
+// 26/10 SOLO FALTA TERMINAR LA IA Y AGREGARLA AL PRINCIPAL
+
 Usuario usu;
 Administrador admin;
 Archivo ar;
