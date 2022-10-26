@@ -1,6 +1,5 @@
 #include <string>
 #include <iostream>
-#include <vector>
 #include <cstdlib>
 #include "Archivo.h"
 #include "Gestor_juego.h"
@@ -9,13 +8,168 @@
 
 using namespace std;
 
-int main(){
-    Usuario usu;
-    Administrador admin;
-    Archivo ar;
-    Sistema sis;
-    Gestor_juego gj;
+Usuario usu;
+Administrador admin;
+Archivo ar;
+Sistema sis;
+Gestor_juego gj;
 
+void menu_admin(){
+    int op_adm = 0;
+
+    cout<<"=============================================="<<endl;
+    cout<<"                   Bienvenido                 "<<endl;
+    cout<<"=============================================="<<endl;
+    cout<<endl;
+    cout<<"Los archivos existentes son: "<<endl;
+    cout<<sis.visualizar_archivos()<<endl;
+    cout<<endl;
+    cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
+    cin.ignore();
+    cin>>op_adm;
+    
+    if(op_adm == 1){
+        string nom_archivo;
+        cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
+        cin.ignore();
+        getline(cin, nom_archivo);
+
+        if(sis.elegir_archivo(nom_archivo) == true){
+            cout<<"El archivo se selecciono correctamente"<<endl;
+        }
+        else{
+            cout<<""<<endl;
+        }
+    }
+    else if(op_adm == 2){
+        string nom_archivo;
+        cout<<"Ingrese el nombre del archivo"<<endl;
+        cin.ignore();
+        getline(cin, nom_archivo);
+
+        if(sis.generar(nom_archivo) == true){
+            cout<<"El archivo fue creado correctamente"<<endl;
+        }
+    }
+    else{
+        cout<<"Opcion invalida"<<endl;
+    }
+};
+
+void menu_uno(){
+    cout<<"ingrese usuario"<<endl;
+    cin.ignore();
+    getline(cin,usu.nickname);
+    cout<<endl;
+    cout<<"ingrese contraseña"<<endl;
+    getline(cin,usu.pwd);
+    cout<<endl;
+    cout<<"Ingrese su rol"<<endl;
+    cout<<"1- Usuario"<<endl;
+    cout<<"2- Administrador"<<endl;
+    cin>>usu.rol;
+
+    if(usu.validar_usuario(1) == true){
+        if(usu.resul_vali == 3 and usu.rol == 1){
+            cout<<"Ingreso exitoso"<<endl;
+            usu.validar_ingreso = 1;
+        }
+        else if(usu.resul_vali == 2){
+            cout<<"El nombre de usuario ingresado no existe"<<endl;
+        }
+        else if(usu.resul_vali == 1){
+            cout<<"La contraseña ingresada no existe"<<endl;
+        }
+        else if(usu.resul_vali == 3 and usu.rol == 2){
+            menu_admin();
+        }
+        else{
+            cout<<"Ocurrio un error"<<endl;
+        }
+    }
+    else{
+        cout<<"Formato incorrecto"<<endl;
+    }
+};
+
+void menu_registrar(){
+    cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
+    cout<<"La contrasena mayor a 8 caracteres y no debe contener numeros"<<endl;
+    cout<<endl;
+    cout<<"Ingrese nombre de usuario"<<endl;
+    cin.ignore();
+    getline(cin,usu.nickname);
+    cout<<endl;
+    cout<<"Ingrese contrasena"<<endl;
+    getline(cin,usu.pwd);
+    cout<<endl;
+
+    if(usu.validar_usuario(2) == true){
+        if(usu.resul_vali == 1){
+            cout<<"El usuario fue registrado exitosamente"<<endl;
+        }
+        else{
+            cout<<"El usuario ya existe"<<endl;
+        }
+    }
+    else{
+        cout<<"El formato ingresado es incorrecto"<<endl;
+    }
+};
+
+void menu_2_jugadores(){
+    int juego_in_op = 0;
+    bool jugador = true;
+
+    while(juego_in_op != 2 or juego_in_op == 1){
+        int columna = 0;
+
+        if(juego_in_op == 1){
+            gj.setear_tablero(gj.tablero);
+            juego_in_op = 0;
+        }
+        cout<<"================================================="<<endl;
+        cout<<"           Juego contra otra persona             "<<endl;
+        cout<<"================================================="<<endl;
+        cout<<endl;
+        usu.cargartablero(gj.tablero);
+        if(jugador == true){
+            cout<<"Juega "<<usu.nickname<<endl;
+        }
+        else{
+            cout<<"Juega invitado"<<endl;
+        }
+        cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
+        cin>>columna;
+        
+        gj.jugar_ficha(columna, jugador, gj.tablero);
+        if(gj.verificar_victoria() == false){
+            jugador =! jugador;
+            system("cls");
+        }
+        else{
+            system("cls");
+            cout<<"================================================="<<endl;
+            cout<<"               FELICIDADES GANASTE               "<<endl;
+            cout<<"================================================="<<endl;
+            cout<<endl;
+            usu.cargartablero(gj.tablero);
+            if(jugador == true){
+                cout<<"Gano el jugador "<<usu.nickname<<endl;
+            }
+            else{
+                cout<<"Gano el jugador invitado"<<endl;
+            }
+            cout<<endl;
+            cout<<"Se desea volver a jugar? "<<endl;
+            cout<<"1- Volver a jugar"<<endl;
+            cout<<"2- Salir"<<endl;
+            cin>>juego_in_op;
+        }
+    }
+};
+
+int main(){
     char copcion;
     int opcion = 0;
     int registro = 0;
@@ -34,103 +188,13 @@ int main(){
         opcion = (int)copcion;
         
         if(opcion == 49){
-            cout<<"ingrese usuario"<<endl;
-            cin.ignore();
-            getline(cin,usu.nickname);
-            cout<<endl;
-            cout<<"ingrese contraseña"<<endl;
-            getline(cin,usu.pwd);
-            cout<<endl;
-            cout<<"Ingrese su rol"<<endl;
-            cout<<"1- Usuario"<<endl;
-            cout<<"2- Administrador"<<endl;
-            cin>>usu.rol;
-
-            if(usu.validar_usuario(1) == true){
-                if(usu.resul_vali == 3 and usu.rol == 1){
-                    cout<<"Ingreso exitoso"<<endl;
-                    registro = 1;
-                }
-                else if(usu.resul_vali == 2){
-                    cout<<"El nombre de usuario ingresado no existe"<<endl;
-                }
-                else if(usu.resul_vali == 1){
-                    cout<<"La contraseña ingresada no existe"<<endl;
-                }
-                else if(usu.resul_vali == 3 and usu.rol == 2){
-                    int op_adm = 0;
-                    cout<<"=============================================="<<endl;
-                    cout<<"                   Bienvenido                 "<<endl;
-                    cout<<"=============================================="<<endl;
-                    cout<<endl;
-                    cout<<"Los archivos existentes son: "<<endl;
-                    cout<<sis.visualizar_archivos()<<endl;
-                    cout<<endl;
-                    cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
-                    cin.ignore();
-                    cin>>op_adm;
-                    
-                    if(op_adm == 1){
-                        string nom_archivo;
-                        cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
-                        cin.ignore();
-                        getline(cin, nom_archivo);
-
-                        if(sis.elegir_archivo(nom_archivo) == true){
-                            cout<<"El archivo se selecciono correctamente"<<endl;
-                        }
-                        else{
-                            cout<<""<<endl;
-                        }
-                    }
-                    else if(op_adm == 2){
-                        string nom_archivo;
-                        cout<<"Ingrese el nombre del archivo"<<endl;
-                        cin.ignore();
-                        getline(cin, nom_archivo);
-
-                        if(sis.generar(nom_archivo) == true){
-                            cout<<"El archivo fue creado correctamente"<<endl;
-                        }
-                    }
-                    else{
-                        cout<<"Opcion invalida"<<endl;
-                    }
-                }
-                else{
-                    cout<<"Ocurrio un error"<<endl;
-                }
-            }
-            else{
-                cout<<"Formato incorrecto"<<endl;
-            }
+            menu_uno();
         }
-        if(opcion == 50){
-            cout<<"El nombre de usuario debe ser mayor a 8 caracteres "<<endl;
-            cout<<"La contrasena mayor a 8 caracteres y no debe contener numeros"<<endl;
-            cout<<endl;
-            cout<<"Ingrese nombre de usuario"<<endl;
-            cin.ignore();
-            getline(cin,usu.nickname);
-            cout<<endl;
-            cout<<"Ingrese contrasena"<<endl;
-            getline(cin,usu.pwd);
-            cout<<endl;
-
-            if(usu.validar_usuario(2) == true){
-                if(usu.resul_vali == 1){
-                    cout<<"El usuario fue registrado exitosamente"<<endl;
-                }
-                else{
-                    cout<<"El usuario ya existe"<<endl;
-                }
-            }
-            else{
-                cout<<"El formato ingresado es incorrecto"<<endl;
-            }
+        else if(opcion == 50){
+            menu_registrar();
         }
-        if(opcion ==51){
-            if(registro == 1){
+        else if(opcion ==51){
+            if(usu.validar_ingreso == 1){
                 char aopcion;
                 int opcion2;
                 cout<<"=============================================="<<endl;
@@ -165,55 +229,10 @@ int main(){
                 */
                 }
                 if(opcion2 == 50){
-                    int juego_in_op = 0;
-                    bool jugador = true;
-
-                    while(juego_in_op != 2 or juego_in_op == 1){
-                        int columna = 0;
-        
-                        if(juego_in_op == 1){
-                            gj.setear_tablero(gj.tablero);
-                            juego_in_op = 0;
-                        }
-                        cout<<"================================================="<<endl;
-                        cout<<"           Juego contra otra persona             "<<endl;
-                        cout<<"================================================="<<endl;
-                        cout<<endl;
-                        usu.cargartablero(gj.tablero);
-                        if(jugador == true){
-                            cout<<"Juega "<<usu.nickname<<endl;
-                        }
-                        else{
-                            cout<<"Juega invitado"<<endl;
-                        }
-                        cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
-                        cin>>columna;
-                        
-                        gj.jugar_ficha(columna, jugador, gj.tablero);
-                        if(gj.verificar_victoria() == false){
-                            jugador =! jugador;
-                            system("cls");
-                        }
-                        else{
-                            system("cls");
-                            cout<<"================================================="<<endl;
-                            cout<<"               FELICIDADES GANASTE               "<<endl;
-                            cout<<"================================================="<<endl;
-                            cout<<endl;
-                            usu.cargartablero(gj.tablero);
-                            if(jugador == true){
-                                cout<<"Gano el jugador "<<usu.nickname<<endl;
-                            }
-                            else{
-                                cout<<"Gano el jugador invitado"<<endl;
-                            }
-                            cout<<endl;
-                            cout<<"Se desea volver a jugar? "<<endl;
-                            cout<<"1- Volver a jugar"<<endl;
-                            cout<<"2- Salir"<<endl;
-                            cin>>juego_in_op;
-                        }
-                    }
+                   menu_2_jugadores();
+                }
+                else{
+                    cout<<"Ingrese una opcion valida"<<endl;
                 }
             }
             else{

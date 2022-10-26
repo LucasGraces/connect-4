@@ -14,6 +14,7 @@ class Usuario : public invitado{
      int resultado_loguin;
      int resultado_registro;
      int resul_vali;
+     int validar_ingreso;
      string ganador;
 
      bool cargar_datos();
