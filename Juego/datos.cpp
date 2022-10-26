@@ -126,3 +126,41 @@ void Prueba::agregarficha(bool jugadores){
       }
    } 
 }; 
+
+
+void Prueba::juego_ia(bool jugadores){
+   int o;
+   ficha--;
+   bool flag = false;
+   if(jugadores == true){
+      for( o = ficha; o < 42; o = o + 7){
+         if(tablero[o] != '\0'){
+            tablero[o-7] = 'X'; 
+            flag=true;
+            break;
+         }
+      }
+      if(flag == false){
+         tablero[35+ficha]='X';
+      }
+   } 
+   else if(jugadores == false){
+      for(int i = 0; i < 294; i = i + 2){
+         if(tablero[lineas[i]] == tablero[lineas[i + 1]]
+            && tablero[lineas[i]] != '\0'){
+               tablero[lineas[i+2]] = 'O';
+         }
+         else if(tablero[lineas[i]] == 'X'){
+            tablero[lineas[i-7]] = 'O';
+            break;
+         }
+         
+      }
+   }
+/*       if(tablero[lineas[i]] == tablero[lineas[i + 1]]
+         or tablero[lineas[i+1]] == tablero[lineas[i + 2]]
+         or tablero[lineas[i+2]] == tablero[lineas[i + 3]]
+         && tablero[lineas[i]] != '\0'){
+      }  */  
+   
+};

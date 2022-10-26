@@ -18,7 +18,7 @@ int main(){
         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
         cin>>pr.ficha;
         
-        pr.agregarficha(jugador);
+        pr.juego_ia(jugador);
         if(pr.ver_ganador() == false){
             jugador=!jugador;
              //system("cls");
@@ -27,7 +27,6 @@ int main(){
         }
         else{
             cout<<"Gano el jugador"<<endl;
-            opcion=2;
         }
 
 /*        pr.tablero_juego();
