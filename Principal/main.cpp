@@ -73,6 +73,7 @@ void menu_uno(){
 
     if(usu.validar_usuario(1) == true){
         if(usu.resul_vali == 3 and usu.rol == 1){
+            system("cls");
             cout<<"Ingreso exitoso"<<endl;
             usu.validar_ingreso = 1;
         }
@@ -122,7 +123,7 @@ void menu_registrar(){
 void menu_2_jugadores(){
     int juego_in_op = 0;
     bool jugador = true;
-
+    system("cls");
     while(juego_in_op != 2 or juego_in_op == 1){
         int columna = 0;
 
@@ -136,9 +137,11 @@ void menu_2_jugadores(){
         cout<<endl;
         usu.cargartablero(gj.tablero);
         if(jugador == true){
+            cout<<endl;
             cout<<"Juega "<<usu.nickname<<endl;
         }
         else{
+            cout<<endl;
             cout<<"Juega invitado"<<endl;
         }
         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
@@ -172,11 +175,12 @@ void menu_2_jugadores(){
 };
 
 int main(){
+    system("Title 4 EN LINEA");
+    system("Color 4e");
     char copcion;
     int opcion = 0;
     int registro = 0;
     while(opcion != 52){
-        cout<<endl;
         cout<<"=============================================="<<endl;
         cout<<"                   Bienvenido                 "<<endl;
         cout<<"=============================================="<<endl;
