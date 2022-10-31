@@ -17,45 +17,53 @@ Sistema sis;
 Gestor_juego gj;
 
 void menu_admin(){
+    system("cls");
+    char cop_adm;
     int op_adm = 0;
+    while(op_adm != 51){
+        cout<<"=============================================="<<endl;
+        cout<<"            Bienvenido ADMINISTRADOR          "<<endl;
+        cout<<"=============================================="<<endl;
+        cout<<endl;
+        cout<<"Los archivos existentes son: "<<endl;
+        cout<<sis.visualizar_archivos()<<endl;
+        cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo \n3-Salir"<<endl;
+        cin>>cop_adm;
+        op_adm = (int)cop_adm;
+        
+        if(op_adm == 49){
+            string nom_archivo;
+            cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
+            cin.ignore();
+            getline(cin, nom_archivo);
 
-    cout<<"=============================================="<<endl;
-    cout<<"                   Bienvenido                 "<<endl;
-    cout<<"=============================================="<<endl;
-    cout<<endl;
-    cout<<"Los archivos existentes son: "<<endl;
-    cout<<sis.visualizar_archivos()<<endl;
-    cout<<endl;
-    cout<<"1- Seleccionar archivo ya en el sistema \n2- Crear un archivo"<<endl;
-    cin.ignore();
-    cin>>op_adm;
-    
-    if(op_adm == 1){
-        string nom_archivo;
-        cout<<"Ingrese el nombre del archivo el cual se utilizara"<<endl;
-        cin.ignore();
-        getline(cin, nom_archivo);
+            if(sis.elegir_archivo(nom_archivo) == true){
+                cout<<"El archivo se selecciono correctamente"<<endl;
+            }
+            else{
+                cout<<""<<endl;
+            }
+        }
+        else if(op_adm == 50){
+            string nom_archivo;
+            cout<<"Ingrese el nombre del archivo"<<endl;
+            cin.ignore();
+            getline(cin, nom_archivo);
 
-        if(sis.elegir_archivo(nom_archivo) == true){
-            cout<<"El archivo se selecciono correctamente"<<endl;
+            if(sis.generar(nom_archivo) == true){
+                cout<<"El archivo fue creado correctamente"<<endl;
+            }
+        }
+        else if(op_adm == 51){
+            cout<<"Hasta Luego Administrador"<<endl;
+            system("cls");
         }
         else{
-            cout<<""<<endl;
+            cout<<"Opcion invalida"<<endl;
         }
     }
-    else if(op_adm == 2){
-        string nom_archivo;
-        cout<<"Ingrese el nombre del archivo"<<endl;
-        cin.ignore();
-        getline(cin, nom_archivo);
-
-        if(sis.generar(nom_archivo) == true){
-            cout<<"El archivo fue creado correctamente"<<endl;
-        }
-    }
-    else{
-        cout<<"Opcion invalida"<<endl;
-    }
+    
+    
 };
 
 void menu_uno(){
