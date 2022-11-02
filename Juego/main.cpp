@@ -7,27 +7,42 @@ using namespace std;
 
 
 int main(){
+    system( "Title 4 En Linea" );
+    system("Color 1e");
     Prueba pr;
     int opcion = 0;
     bool jugador=true;
-    while(opcion != 2)   
-    {
-      
-        pr.tablero_juego();
+    cin.ignore();
+    while(opcion != 2) {
+        pr.archivo();
+        cin>>opcion;
+        
+        if(opcion == 2){
+            cout<<"HASTA LUEGO"<<endl;
+        }
+        /*pr.tablero_juego();
         cout<<"Juega el Jugador"<<endl;
         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
         cin>>pr.ficha;
         
         pr.juego_ia(jugador);
         if(pr.ver_ganador() == false){
-            jugador=!jugador;
-             //system("cls");
+            //jugador=!jugador;
+            //system("cls");
         
             
         }
         else{
             cout<<"Gano el jugador"<<endl;
-        }
+            //system("pause");
+        }*/ 
+    }    
+};
+
+
+
+
+
 
 /*        pr.tablero_juego();
         pr.ver_ganador();
@@ -51,6 +66,3 @@ int main(){
             cout<<"Gano el jugador 1"<<endl;
             //opcion=2;
         }*/
-    }
-    
-};
