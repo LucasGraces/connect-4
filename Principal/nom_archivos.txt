@@ -1,3 +1,6 @@
 password.txt
 nickname_us.txt
-nom_archivos.txtprueba.txt
+nom_archivos.txt
+prueba2.txt
+prueba.txt
+prueba3.txt
