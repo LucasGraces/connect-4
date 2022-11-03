@@ -9,33 +9,16 @@ int main(){
     system("Color 1e");
     Prueba pr;
     int opcion = 0;
-    //bool jugador=true;
-    cin.ignore();
-    pr.archivo();
+    bool jugador;
     while(opcion != 2) {
-        pr.archivo();
-<<<<<<< HEAD
-        cout<<"hola"<<endl;
-=======
-        cout<<"2 PARA SALIR"<<endl;
-        cin.ignore();
->>>>>>> 80fea31c0f29f311240d3e07e08b32e4b1922122
-        cin>>opcion;
-        
-        if(opcion == 2){
-            cout<<"HASTA LUEGO"<<endl;
-        }
-        else{
-            cout<<"AAAAA"<<endl;
-        }
-        /*pr.tablero_juego();
+        pr.tablero_juego();
         cout<<"Juega el Jugador"<<endl;
         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
         cin>>pr.ficha;
         
         pr.juego_ia(jugador);
         if(pr.ver_ganador() == false){
-            //jugador=!jugador;
+            jugador =! jugadores;
             //system("cls");
         
             
@@ -43,7 +26,7 @@ int main(){
         else{
             cout<<"Gano el jugador"<<endl;
             //system("pause");
-        }*/ 
+        }
     }    
 };
 

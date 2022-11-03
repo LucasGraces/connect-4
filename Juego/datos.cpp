@@ -199,6 +199,7 @@ void Prueba::juego_ia(bool jugadores){
          if(tablero[o] != '\0'){
             tablero[o-7] = 'X'; 
             flag=true;                       // Esto la parte en la que juega el usuario
+            cout<<"hola1";
             break;
          }
       }
@@ -208,7 +209,8 @@ void Prueba::juego_ia(bool jugadores){
    }
 
    else if(jugadores == false ){
-      for(i = 0 ;i < 1000; i = i + 4 ){
+      cout<<"hola2";
+      for(i = 0 ;i < 4; i = i + 4 ){
          if(tablero[numeros[i]] = 'O'
             && tablero[numeros[i + 1]] == 'O'
             && tablero[numeros[i + 2]] == 'O'
@@ -230,7 +232,7 @@ void Prueba::juego_ia(bool jugadores){
                }
             }
          }
-         /*
+
          else if(tablero[numeros[i]] = 'X'
             && tablero[numeros[i + 1]] == 'X'
             && tablero[numeros[i + 2]] == 'X'
@@ -271,7 +273,7 @@ void Prueba::juego_ia(bool jugadores){
                   break;
                }
             }
-         }*/
+         }
       } 
    }
 };
