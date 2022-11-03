@@ -20,7 +20,7 @@ class Prueba{
 
     public:
         int ficha;
-        vector<int> numeros;
+        vector<int> numbers;
         string number;
 
         void tablero_juego();
