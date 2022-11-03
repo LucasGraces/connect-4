@@ -176,23 +176,19 @@ void Prueba::juego_ia(bool jugadores){
 
 void Prueba::archivo(){
    int resu;
-   int i=0;
-
-   cout<<"SPOD;KGJIDSOIGJJKGOIDSJ";
+   
    ifstream archivo("jugadas_ia.txt");
 
    while(archivo>>resu){
-      numbers[i] = resu;
-      i++; 
-   }
+      numeros.push_back(resu);
    
-   for(int t = 0; t < 3; t++){
-      cout<<numbers[t];
    }
+
    archivo.close();
 };
 
-/*void Prueba::juego_ia(bool jugadores){
+void Prueba::juego_ia(bool jugadores){
+   archivo();
    int o;
    int i;
    ficha--;
@@ -210,17 +206,18 @@ void Prueba::archivo(){
          tablero[35+ficha]='X';
       }
    }
+
    else if(jugadores == false ){
       for(i = 0 ;i < 1000; i = i + 4 ){
-         if(tablero[numbers[i]] = 'O'
-            && tablero[numbers[i + 1]] == 'O'
-            && tablero[numbers[i + 2]] == 'O'
-            && tablero[numbers[i]] != '\0'){  // Trata de ganar
+         if(tablero[numeros[i]] = 'O'
+            && tablero[numeros[i + 1]] == 'O'
+            && tablero[numeros[i + 2]] == 'O'
+            && tablero[numeros[i]] != '\0'){  // Trata de ganar
             
-            if(tablero[numbers[i+3]] + 7 != '\0'){
-               tablero[numbers[i + 3]] == 'O';
+            if(tablero[numeros[i + 3]] + 7 != '\0'){
+               tablero[numeros[i + 3]] == 'O';
             }
-            else if(tablero[numbers[i+3]] + 7 == '\0'){
+            else if(tablero[numeros[i+3]] + 7 == '\0'){
                int b;
                b = 1 + rand() % 8;
                ficha = b;
@@ -233,15 +230,16 @@ void Prueba::archivo(){
                }
             }
          }
-         else if(tablero[numbers[i]] = 'X'
-            && tablero[numbers[i + 1]] == 'X'
-            && tablero[numbers[i + 2]] == 'X'
-            && tablero[numbers[i]] != '\0'){  // Evita que el contricante gane
+         /*
+         else if(tablero[numeros[i]] = 'X'
+            && tablero[numeros[i + 1]] == 'X'
+            && tablero[numeros[i + 2]] == 'X'
+            && tablero[numeros[i]] != '\0'){  // Evita que el contricante gane
             
-            if(tablero[numbers[i+3]] + 7 != '\0'){
-               tablero[numbers[i + 3]] == 'O';
+            if(tablero[numeros[i+3]] + 7 != '\0'){
+               tablero[numeros[i + 3]] == 'O';
             }
-            else if(tablero[numbers[i+3]] + 7 == '\0'){
+            else if(tablero[numeros[i+3]] + 7 == '\0'){
                int b;
                b = 1 + rand() % 8;
                ficha = b;
@@ -254,13 +252,13 @@ void Prueba::archivo(){
                }
             }
          }
-         else if(tablero[numbers[i]] == 'O' or tablero[numbers[i]] == '\0'
-               && tablero[numbers[i+1]] == 'O' or tablero[numbers[i+1]] == '\0'
-               && tablero[numbers[i+2]] == 'O' or tablero[numbers[i+2]] == '\0'
-               && tablero[numbers[i+3]] == 'O' or tablero[numbers[i+3]] == '\0'){     // Trata de hacer una jugada
+         else if(tablero[numeros[i]] == 'O' or tablero[numeros[i]] == '\0'
+               && tablero[numeros[i+1]] == 'O' or tablero[numeros[i+1]] == '\0'
+               && tablero[numeros[i+2]] == 'O' or tablero[numeros[i+2]] == '\0'
+               && tablero[numeros[i+3]] == 'O' or tablero[numeros[i+3]] == '\0'){     // Trata de hacer una jugada
                int a;
                a = rand() % 4; // Genera un valor entre 0 y 9
-               tablero[numbers[i+a]] == 'O';
+               tablero[numeros[i+a]] == 'O';
          }
          else{  // Pone la ficha en un lugar aleatorio
             int b;
@@ -273,7 +271,7 @@ void Prueba::archivo(){
                   break;
                }
             }
-         }
+         }*/
       } 
    }
-};*/
+};
