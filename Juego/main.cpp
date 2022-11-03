@@ -13,8 +13,10 @@ int main(){
     int opcion = 0;
     bool jugador=true;
     cin.ignore();
+    pr.archivo();
     while(opcion != 2) {
         pr.archivo();
+        cout<<"hola"<<endl;
         cin>>opcion;
         
         if(opcion == 2){
