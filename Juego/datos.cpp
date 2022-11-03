@@ -212,7 +212,7 @@ void Prueba::juego_ia(bool jugadores){
          if(tablero[numeros[i]] = 'O'
             && tablero[numeros[i + 1]] == 'O'
             && tablero[numeros[i + 2]] == 'O'
-            && tablero[numeros[i]] != '\0'){  // Trata de ganar
+            && tablero[numeros[i]] != '\0'){  // Trata de ganar la partida
             
             if(tablero[numeros[i + 3]] + 7 != '\0'){
                tablero[numeros[i + 3]] == 'O';
