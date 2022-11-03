@@ -4,21 +4,24 @@
 
 using namespace std;
 
-
-
 int main(){
     system( "Title 4 En Linea" );
     system("Color 1e");
     Prueba pr;
     int opcion = 0;
-    bool jugador=true;
+    //bool jugador=true;
     cin.ignore();
     while(opcion != 2) {
         pr.archivo();
+        cout<<"2 PARA SALIR"<<endl;
+        cin.ignore();
         cin>>opcion;
         
         if(opcion == 2){
             cout<<"HASTA LUEGO"<<endl;
+        }
+        else{
+            cout<<"AAAAA"<<endl;
         }
         /*pr.tablero_juego();
         cout<<"Juega el Jugador"<<endl;
@@ -38,11 +41,6 @@ int main(){
         }*/ 
     }    
 };
-
-
-
-
-
 
 /*        pr.tablero_juego();
         pr.ver_ganador();
