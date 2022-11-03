@@ -19,13 +19,13 @@ class Prueba{
                         36,5,11,17,23,11,17,23,29,17,23,29,35,4,10,16,22,10,16,22,28,3,9,15,21};
 
     public:
+        vector<int> numeros;
         int ficha;
-        vector<int> numbers;
-        string number;
-
+        
+        void archivo();
+        
         void tablero_juego();
         void agregarficha(bool jugadores);
         bool ver_ganador();
         void juego_ia(bool jugadores);
-        void archivo();
 };
