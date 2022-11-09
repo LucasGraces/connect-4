@@ -5,6 +5,8 @@
 using namespace std;
 
 int main(){
+    system("Title 4 EN LINEA");
+    system("Color 4e");
     Prueba pr;
     int opcion = 0;
     bool jugador = true;
@@ -22,7 +24,7 @@ int main(){
                 //system("cls");
             }
             else{
-                
+                pr.cargar_archivo();
                 cout<<"Gano la IA"<<endl;
                 cout<<"---------------------------------------------------------------------------------"<<endl;
             }
@@ -41,6 +43,7 @@ int main(){
         }
         else{
             cout<<"Gano el jugador"<<endl;
+            //pr.cargar_archivo();
         }
     }
 };

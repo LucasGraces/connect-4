@@ -11,7 +11,7 @@ void Prueba::tablero_juego(){
    int col=0;
    int numeros[7] = {1,2,3,4,5,6,7};
    cout<<" ";
-   for(int i=0; i< 7;i++){
+   for(int i=0; i< 7;i++){// muere
       cout<<numeros[i];
       cout<<"  ";
    }
@@ -27,17 +27,19 @@ void Prueba::tablero_juego(){
    }
 };
 bool Prueba::ver_ganador(){
-   bool resultado = false;
-
-   for(int i = 0; i < 294; i = i + 4){
+   for(int i = 0; i < 294; i = i + 4){ //muere
       if(tablero[lineas[i]] == tablero[lineas[i + 1]]
-         && tablero[lineas[i]] == tablero[lineas[i + 2]]
-         && tablero[lineas[i]] == tablero[lineas[i + 3]]
-         && tablero[lineas[i]] != '\0'){
-            resultado = true;
-      }   
-   }
-   return resultado;
+        && tablero[lineas[i]] == tablero[lineas[i + 2]]
+        && tablero[lineas[i]] == tablero[lineas[i + 3]]
+        && tablero[lineas[i]] != '\0'){
+            ganada4 = lineas[i];
+            ganada3 = lineas[i + 1];
+            ganada2 = lineas[i + 2];
+            ganada1 = lineas[i + 3];
+            return true;
+        }
+    }
+   return false;
 };
 
 void Prueba::agregarficha(bool jugadores){
@@ -76,129 +78,80 @@ void Prueba::archivo(){
    int resu;
    
    ifstream archivo("jugadas_ia.txt");
-
    while(archivo>>resu){
       numeros.push_back(resu);
    }
-
    archivo.close();
 };
 
+void Prueba::cargar_archivo(){
+    ofstream archivo;
+    bool resultado = false;
+    archivo.open("jugadas_ia.txt",ios::app);
+    archivo<<ganada1;
+    archivo<<" ";
+    archivo<<ganada2;
+    archivo<<" ";
+    archivo<<ganada3;
+    archivo<<" ";
+    archivo<<ganada4;
+    archivo<<"\n";
+
+    if(archivo.fail()){
+        resultado = false;
+        
+    }
+    resultado = true;
+
+    archivo.close();
+}
+
 void Prueba::juego_ia(bool jugadores){
-   
+   int i;
    int o;
    ficha--;
    bool flag = false;
    bool fla = false;
    if(jugadores == true){
+/*       for(int h = 0; h < 42;h++){
+        cout<<"PEPITO: "<< tablero[h]<<endl;
+      } */
      for( o = ficha; o < 42; o = o + 7){
          if(tablero[o] != '\0'){
-            tablero[o - 7] = 'X'; 
-            flag = true;
+            tablero[o - 7] = 'X';
+            fla = true;
             break;
-         }                             // JUEGA EL JUGADOR
+        }                             // JUEGA EL JUGADOR
       }
-      if(flag==false){
+      if(fla==false){
          tablero[35 + ficha] = 'X';
+        }
+   }
+   if(jugadores == false){
+      for(i = 0 ;i < numeros.size() ; i = i + 4){
+         if(tablero[numeros[i]] == tablero[numeros[i + 1]]
+            && tablero[numeros[i]] == tablero[numeros[i + 2]] ){  // Trata de ganar y e
+            cout<<numeros[i + 3]<<endl;
+            tablero[numeros[i + 3]] = 'O';
+         }
       }
    }
-
-   else if(jugadores == false){
-      int largo = numeros.size();
-      
-      for(int i = 0 ;i < largo; i = i + 4 ){
-         if(tablero[numeros[i]] = 'O'
-            && tablero[numeros[i + 1]] == 'O'
-            && tablero[numeros[i + 2]] == 'O'
-            && tablero[numeros[i]] != '\0'){  // Trata de ganar
-            
-            if(tablero[numeros[i + 3]] + 7 != '\0'){
-               tablero[numeros[i + 3]] == 'O';
-            }
-            else if(tablero[numeros[i+3]] + 7 == '\0'){
-               int b;
-               b = 1 + rand() % 8;
-               ficha = b;
-               for( o = ficha; o < 42; o = o + 7){
-                  if(tablero[o] != '\0'){
-                     tablero[o-7] = 'O'; 
-                     flag=true;            //re
-                     break;
-                  }
-               }
-            }
-         }
-         else if(tablero[numeros[i]] = 'X'
-            && tablero[numeros[i + 1]] == 'X'
-            && tablero[numeros[i + 2]] == 'X'
-            && tablero[numeros[i]] != '\0'){  // Evita que el contricante gane
-            
-            if(tablero[numeros[i+3]] + 7 != '\0'){
-               tablero[numeros[i + 3]] == 'O';
-            }
-            else if(tablero[numeros[i+3]] + 7 == '\0'){
-               int b;
-               b = 1 + rand() % 8;
-               ficha = b;
-               for( o = ficha; o < 42; o = o + 7){
-                  if(tablero[o] != '\0'){
-                     tablero[o-7] = 'X'; 
-                     flag=true;            
-                     break;
-                  }
-               }
-            }
-         }
-         else if(tablero[numeros[i]] == 'O' or tablero[numeros[i]] == '\0'
-            && tablero[numeros[i+1]] == 'O' or tablero[numeros[i+1]] == '\0'
-            && tablero[numeros[i+2]] == 'O' or tablero[numeros[i+2]] == '\0'
-            && tablero[numeros[i+3]] == 'O' or tablero[numeros[i+3]] == '\0'){     // Trata de hacer una jugada
-            
-            
-            if(tablero[numeros[i]] + 7 != '\0' and tablero[i + 7] == 'X'
-               and tablero[numeros[i + 1]] + 7 != '\0' and tablero[i + 8] == 'X'
-               and tablero[numeros[i + 2]] + 7 != '\0' and tablero[i + 9] == 'X'
-               and tablero[numeros[i + 3]] + 7 != '\0' and tablero[i + 10] == 'X'){
-               cout<<"hola"<<endl;
-               int a = rand() % 4; 
-               tablero[numeros[i + a]] = 'O';
+   else{
+         // Pone la ficha en un lugar aleatorio
+         int b;
+         b = 1 + rand() % 8; //genera un numero entre 1 y 7
+         int posicion = b;
+         for( int j = posicion; j < 42; j = j + 7){
+            if(tablero[j] != '\0'){
+               tablero[j - 7] = 'O'; 
+               flag = true;            //ESTE YA FUNCIONA
                break;
             }
-            else{             // Pone la ficha en un lugar aleatorio
-               int b;
-               b = 1 + rand() % 8; //genera un numero entre 1 y 7
-               int posicion = b;
-               for( int j = posicion; j < 42; j = j + 7){
-                  if(tablero[j] != '\0'){
-                     tablero[j - 7] = 'O'; 
-                     flag = true;       
-                     break;
-                  }
-               }
-               if(flag == false){
-                  tablero[35 + posicion] = '0';
-               }
-               break;
-            }
-            
          }
-         else{
-            // Pone la ficha en un lugar aleatorio
-            int b;
-            b = 1 + rand() % 8; //genera un numero entre 1 y 7
-            int posicion = b;
-            for( int j = posicion; j < 42; j = j + 7){
-               if(tablero[j] != '\0'){
-                  tablero[j - 7] = 'O'; 
-                  flag = true;            //ESTE YA FUNCIONA
-                  break;
-               }
-            }
-            if(flag == false){
-               tablero[35 + posicion] = '0';
-            }
+         if(flag == false){
+            tablero[35 + posicion] = 'O';
          }
-      
-      } 
-   }
+      }
+   
+    
 };

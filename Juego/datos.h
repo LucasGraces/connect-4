@@ -20,7 +20,7 @@ class Prueba{
 
     public:
         int ficha;
-        vector<int> numbers;
+        vector<int> numeros;
         string number;
 
         void tablero_juego();
@@ -28,4 +28,10 @@ class Prueba{
         bool ver_ganador();
         void juego_ia(bool jugadores);
         void archivo();
+        void cargar_archivo();
+        int ganada1;
+        int ganada2;
+        int ganada3;
+        int ganada4;
+        bool jugada;
 };
