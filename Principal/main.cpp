@@ -227,6 +227,7 @@ void menu_ia(){
             else{
                 cout<<"Gano la IA"<<endl;
             }
+            ar.cargar_archivo();
             cout<<endl;
             cout<<"Se desea volver a jugar? "<<endl;
             cout<<"1- Volver a jugar"<<endl;
