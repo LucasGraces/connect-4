@@ -185,7 +185,7 @@ void menu_2_jugadores(){
 void menu_ia(){
     int juego_in_op = 0;
     bool jugador = true;
-    //system("cls");
+    system("cls");
     gj.archivo();
     while(juego_in_op != 2 or juego_in_op == 1){
         int columna = 0;
@@ -199,14 +199,28 @@ void menu_ia(){
         cout<<"================================================="<<endl;
         cout<<endl;
         usu.cargartablero(gj.tablero);
-        
-        if(jugador == true){
-            cout<<endl;
-            cout<<"Juega "<<usu.nickname<<endl;
-            cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
-            cin>>columna;
+
+        if(columna != 0 ){
+            gj.juego_ia(columna, jugador, gj.tablero);
+            usu.cargartablero(gj.tablero);
+            if(gj.verificar_victoria() == false){
+                jugador =! jugador;
+                gj.ficha = 0;
+                //system("cls");
+            }
+            else{
+                ar.cargar_archivo();
+                cout<<"Gano la IA"<<endl;
+            }
         }
+        cout<<endl;
+        cout<<"Juega "<<usu.nickname<<endl;
+        cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
+        cin>>gj.ficha;
+        columna = gj.ficha;
+
         gj.juego_ia(columna, jugador, gj.tablero);
+        
         if(gj.verificar_victoria() == false){
             jugador =! jugador;
             //system("cls");

@@ -93,7 +93,6 @@ void Archivo::cargar_archivo(){
 
    if(archivo.fail()){
       resultado = false;
-      
    }
    resultado = true;
 

@@ -17,10 +17,10 @@ bool Gestor_juego::verificar_victoria(){
          ar.ganada3 = lineas[i + 1];
          ar.ganada2 = lineas[i + 2];
          ar.ganada1 = lineas[i + 3];
-         resultado = true;
+         return true;
       }   
    }
-   return resultado;
+   return false;
 };
 
 int Gestor_juego::jugar_ficha(int colum, bool jugadores, char tablero[]){
@@ -79,7 +79,7 @@ int Gestor_juego::juego_ia(int colum, bool jugadores, char tablero[]){
       }
       if(fla==false){
          tablero[35 + colum] = 'X';
-        }
+      }
    }
    if(jugadores == false){
       for(i = 0 ;i < numeros.size() ; i = i + 4){
@@ -90,21 +90,21 @@ int Gestor_juego::juego_ia(int colum, bool jugadores, char tablero[]){
       }
    }
    else{
-         // Pone la ficha en un lugar aleatorio
-         int b;
-         b = 1 + rand() % 8; //genera un numero entre 1 y 7
-         int posicion = b;
-         for( int j = posicion; j < 42; j = j + 7){
-            if(tablero[j] != '\0'){
-               tablero[j - 7] = 'O'; 
-               flag = true;            //ESTE YA FUNCIONA
-               break;
-            }
-         }
-         if(flag == false){
-            tablero[35 + posicion] = 'O';
+      // Pone la ficha en un lugar aleatorio
+      int b;
+      b = 1 + rand() % 8; //genera un numero entre 1 y 7
+      int posicion = b;
+      for( int j = posicion; j < 42; j = j + 7){
+         if(tablero[j] != '\0'){
+            tablero[j - 7] = 'O'; 
+            flag = true;            //ESTE YA FUNCIONA
+            break;
          }
       }
+      if(flag == false){
+         tablero[35 + posicion] = 'O';
+      }
+   }
 };
 
 void Gestor_juego::archivo(){
