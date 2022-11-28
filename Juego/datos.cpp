@@ -202,8 +202,3 @@ void Prueba::juego_ia(bool jugadores){
       } 
    }
 };
-
-/*
-
-         
-*/
