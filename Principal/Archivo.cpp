@@ -77,3 +77,7 @@ string Archivo::buscar_disponibles(){
     archivo.close();
     return resultado;
 };
+
+void Archivo::cargar_archivo(){
+    ofstream fs('jugadas_ia.txt');
+};
