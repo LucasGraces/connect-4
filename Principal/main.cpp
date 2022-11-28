@@ -182,6 +182,64 @@ void menu_2_jugadores(){
     }
 };
 
+void menu_ia(){
+    int juego_in_op = 0;
+    bool jugador = true;
+    system("cls");
+    gj.archivo();
+    while(juego_in_op != 2 or juego_in_op == 1){
+        int columna = 0;
+
+        if(juego_in_op == 1){
+            gj.setear_tablero(gj.tablero);
+            juego_in_op = 0;
+        }
+        cout<<"================================================="<<endl;
+        cout<<"           Juego contra la computadora           "<<endl;
+        cout<<"================================================="<<endl;
+        cout<<endl;
+        usu.cargartablero(gj.tablero);
+        if(jugador == true){
+            cout<<endl;
+            cout<<"Juega "<<usu.nickname<<endl;
+            cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
+            cin>>columna;
+        }
+        else{
+            cout<<endl;
+            cout<<"Juega IA"<<endl;
+        }
+        gj.jugar_ficha(columna, jugador, gj.tablero);
+        if(gj.verificar_victoria() == false){
+            jugador =! jugador;
+            system("cls");
+        }
+        else{
+            system("cls");
+            cout<<"================================================="<<endl;
+            cout<<"               FELICIDADES GANASTE               "<<endl;
+            cout<<"================================================="<<endl;
+            cout<<endl;
+            usu.cargartablero(gj.tablero);
+            if(jugador == true){
+                cout<<"Gano el jugador "<<usu.nickname<<endl;
+            }
+            else{
+                cout<<"Gano la IA"<<endl;
+            }
+            cout<<endl;
+            cout<<"Se desea volver a jugar? "<<endl;
+            cout<<"1- Volver a jugar"<<endl;
+            cout<<"2- Salir"<<endl;
+            cin>>juego_in_op;
+
+            if(juego_in_op == 1){
+                gj.archivo();
+            }
+        }
+    }
+};
+
 int main(){
     system("Title 4 EN LINEA");
     system("Color 4e");
@@ -221,26 +279,8 @@ int main(){
                 cin.ignore();
                 opcion2 = (int)aopcion;
 
-                if(opcion2 == 49){/*
-                    cout<<"================================================="<<endl;
-                    cout<<"           Juego contra la computadora           "<<endl;
-                    cout<<"================================================="<<endl;
-                    cin>>gj.jugar_ia();
-                    while(sis.verificarfinal() != false){
-                        cout<<"ingrese columna de la ficha"<<endl;
-                        cin>>ficha;
-                        cin.ignore();
-
-                    }
-                    if(sis.verificarfinal() == true){
-                        cout<<"el ganador es "<<endl;
-
-                    }
-                    if(sis.fichas == 48){
-                        cout<<"El juego termino en empate"<<endl;
-
-                    }
-                */
+                if(opcion2 == 49){
+                    menu_ia();
                 }
                 if(opcion2 == 50){
                    menu_2_jugadores();
