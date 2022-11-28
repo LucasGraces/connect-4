@@ -79,5 +79,23 @@ string Archivo::buscar_disponibles(){
 };
 
 void Archivo::cargar_archivo(){
-    ofstream fs('jugadas_ia.txt');
+    ofstream archivo;
+   bool resultado = false;
+   archivo.open("jugadas_ia.txt",ios::app);
+   archivo<<ganada1;
+   archivo<<" ";
+   archivo<<ganada2;
+   archivo<<" ";
+   archivo<<ganada3;
+   archivo<<" ";
+   archivo<<ganada4;
+   archivo<<"\n";
+
+   if(archivo.fail()){
+      resultado = false;
+      
+   }
+   resultado = true;
+
+   archivo.close();
 };
