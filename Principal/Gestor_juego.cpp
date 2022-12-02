@@ -77,7 +77,7 @@ int Gestor_juego::juego_ia(int colum, bool jugadores, char tablero[]){
             break;
         }                             // JUEGA EL JUGADOR
       }
-      if(fla==false){
+      if(fla == false){
          tablero[35 + colum] = 'X';
       }
    }
@@ -87,22 +87,22 @@ int Gestor_juego::juego_ia(int colum, bool jugadores, char tablero[]){
             && tablero[numeros[i]] == tablero[numeros[i + 2]] ){  // Trata de ganar y e
             tablero[numeros[i + 3]] = 'O';
          }
-      }
-   }
-   else{
-      // Pone la ficha en un lugar aleatorio
-      int b;
-      b = 1 + rand() % 8; //genera un numero entre 1 y 7
-      int posicion = b;
-      for( int j = posicion; j < 42; j = j + 7){
-         if(tablero[j] != '\0'){
-            tablero[j - 7] = 'O'; 
-            flag = true;            //ESTE YA FUNCIONA
-            break;
+         else if (tablero[numeros[i]] != tablero[numeros[i + 1]]){
+            // Pone la ficha en un lugar aleatorio
+            int b;
+            b = 1 + rand() % 8; //genera un numero entre 1 y 7
+            int posicion = b;
+            for( int j = posicion; j < 42; j = j + 7){
+               if(tablero[j] != '\0'){
+                  tablero[j - 7] = 'O'; 
+                  flag = true;            
+                  break;
+               }
+            }
+            if(flag == false){
+               tablero[35 + posicion] = 'O';
+            }
          }
-      }
-      if(flag == false){
-         tablero[35 + posicion] = 'O';
       }
    }
 };

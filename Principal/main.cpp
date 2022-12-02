@@ -185,11 +185,11 @@ void menu_2_jugadores(){
 void menu_ia(){
     int juego_in_op = 0;
     bool jugador = true;
-    system("cls");
+    //system("cls");
     gj.archivo();
     while(juego_in_op != 2 or juego_in_op == 1){
         int columna = 0;
-
+        int aux = 0;
         if(juego_in_op == 1){
             gj.setear_tablero(gj.tablero);
             juego_in_op = 0;
@@ -200,7 +200,7 @@ void menu_ia(){
         cout<<endl;
         usu.cargartablero(gj.tablero);
 
-        if(columna != 0 ){
+        if(aux != 0 ){
             gj.juego_ia(columna, jugador, gj.tablero);
             usu.cargartablero(gj.tablero);
             if(gj.verificar_victoria() == false){
@@ -216,8 +216,8 @@ void menu_ia(){
         cout<<endl;
         cout<<"Juega "<<usu.nickname<<endl;
         cout<<"Ingrese numero de columna que quiere ingresar ficha"<<endl;
-        cin>>gj.ficha;
-        columna = gj.ficha;
+        cin>>columna;
+        aux = columna;
 
         gj.juego_ia(columna, jugador, gj.tablero);
         
@@ -294,7 +294,7 @@ int main(){
                 if(opcion2 == 49){
                     menu_ia();
                 }
-                if(opcion2 == 50){
+                else if(opcion2 == 50){
                    menu_2_jugadores();
                 }
                 else{
